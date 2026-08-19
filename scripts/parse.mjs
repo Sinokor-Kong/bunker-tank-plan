@@ -175,13 +175,13 @@ function sanitizeSlug(reportDate) {
 function fuzzyMatchTankId(tankName, tanks) {
   const norm = s => s.toUpperCase().replace(/[^A-Z0-9]/g, "");
   const target = norm(tankName);
-  let best = null;
-  for (const t of tanks) {
-    const cand = norm(t.name);
-    if (cand === target) return t.id;
-    if ((cand.includes(target) || target.includes(cand)) && (!best || cand.length < norm(best.name).length)) best = t;
-  }
-  return best ? best.id : null;
+  const exact = tanks.find(t => norm(t.name) === target);
+  if (exact) return exact.id;
+  // Port/Starboard 표기가 빠지는 등으로 두 개 이상의 Tank와 동시에 부분 일치하면, 잘못 추측해서
+  // 서로 다른 Tank의 ROB가 같은 tankId로 겹쳐버리는 것(validateReport가 "중복 Tank"로 잡아내지만
+  // 애초에 발생하지 않는 게 낫다)보다, 매칭 실패로 처리해 _unmatched로 보내는 편이 안전하다.
+  const partial = tanks.filter(t => { const cand = norm(t.name); return cand.includes(target) || target.includes(cand); });
+  return partial.length === 1 ? partial[0].id : null;
 }
 
 async function processManifestDir(dir) {
@@ -242,7 +242,7 @@ async function processManifestDir(dir) {
       aiResult = await callGemini({
         system: `너는 선박 Bunker ROB Report 표를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}`,
         parts: [
-          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName은 이 중 하나와 최대한 일치시켜라):\n${JSON.stringify(knownTanks)}\n\n아래는 Excel Report의 원본 표(시트별 2차원 배열, header:1)이다:\n${JSON.stringify(sheets)}` }
+          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName에는 이 목록에 있는 name 값을 철자/기호까지 정확히 그대로 복사해서 적어라 (Port/Starboard 등을 짐작해서 새로 만들지 말고, 이 목록에 없는 이름은 절대 쓰지 말 것)):\n${JSON.stringify(knownTanks)}\n\n아래는 Excel Report의 원본 표(시트별 2차원 배열, header:1)이다:\n${JSON.stringify(sheets)}` }
         ],
         schema: ROB_REPORT_SCHEMA
       });
@@ -252,7 +252,7 @@ async function processManifestDir(dir) {
         system: `너는 선박 Bunker ROB Report를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}`,
         parts: [
           { inlineData: { mimeType: "application/pdf", data: bytes.toString("base64") } },
-          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName은 이 중 하나와 최대한 일치시켜라):\n${JSON.stringify(knownTanks)}\n\n이 Bunker ROB Report에서 Tank별 ROB를 추출해줘.` }
+          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName에는 이 목록에 있는 name 값을 철자/기호까지 정확히 그대로 복사해서 적어라 (Port/Starboard 등을 짐작해서 새로 만들지 말고, 이 목록에 없는 이름은 절대 쓰지 말 것)):\n${JSON.stringify(knownTanks)}\n\n이 Bunker ROB Report에서 Tank별 ROB를 추출해줘.` }
         ],
         schema: ROB_REPORT_SCHEMA
       });
