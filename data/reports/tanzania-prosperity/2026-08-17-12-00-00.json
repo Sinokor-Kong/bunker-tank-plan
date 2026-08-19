@@ -1,0 +1,71 @@
+{
+  "vesselId": "tanzania-prosperity",
+  "reportDate": "2026-08-17T12:00:00",
+  "meta": {
+    "position": "-",
+    "condition": "-",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "HFO",
+      "rob": 1245.9
+    },
+    {
+      "tankId": "no1-hfo-p",
+      "grade": "HFO",
+      "rob": 1686.7
+    },
+    {
+      "tankId": "hfo-drain-p",
+      "grade": "HFO",
+      "rob": 16.6
+    },
+    {
+      "tankId": "hfo-serv-p",
+      "grade": "HFO",
+      "rob": 60.9
+    },
+    {
+      "tankId": "hfo-sett-p",
+      "grade": "HFO",
+      "rob": 80.4
+    },
+    {
+      "tankId": "lshfo-serv-p",
+      "grade": "VLSFO",
+      "rob": 28.1
+    },
+    {
+      "tankId": "lshfo-sett-p",
+      "grade": "VLSFO",
+      "rob": 35.7
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HFO",
+      "rob": 23.5
+    },
+    {
+      "tankId": "no3-hfo-s",
+      "grade": "VLSFO",
+      "rob": 1466.6
+    },
+    {
+      "tankId": "no4-lshfo-s",
+      "grade": "HFO",
+      "rob": 500.8
+    },
+    {
+      "tankId": "do-t-s",
+      "grade": "LSMGO",
+      "rob": 368.5
+    },
+    {
+      "tankId": "do-serv-s",
+      "grade": "LSMGO",
+      "rob": 43.3
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "vesselId": "mozambique-b",
+  "reportDate": "2026-08-16T12:00:00",
+  "meta": {
+    "position": "SPM 2- AL SHAHEEN",
+    "condition": "-",
+    "trim": 3
+  },
+  "rob": [
+    {
+      "tankId": "no2-mgo-p",
+      "grade": "MGO",
+      "rob": 229.8
+    },
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "HFO",
+      "rob": 1087.8
+    },
+    {
+      "tankId": "ls-hfo-p",
+      "grade": "LSHFO",
+      "rob": 424
+    },
+    {
+      "tankId": "no1-mgo-s",
+      "grade": "MGO",
+      "rob": 197.3
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "HFO",
+      "rob": 1767.4
+    },
+    {
+      "tankId": "no1-hfo-s",
+      "grade": "HFO",
+      "rob": 1.5
+    },
+    {
+      "tankId": "fo-sett",
+      "grade": "HFO",
+      "rob": 102.8
+    },
+    {
+      "tankId": "fo-serv",
+      "grade": "HFO",
+      "rob": 110.6
+    },
+    {
+      "tankId": "ls-fo-sett",
+      "grade": "LSHFO",
+      "rob": 0.8
+    },
+    {
+      "tankId": "ls-fo-serv",
+      "grade": "LSHFO",
+      "rob": 0.2
+    },
+    {
+      "tankId": "overflow",
+      "grade": "HFO",
+      "rob": 0.2
+    },
+    {
+      "tankId": "mgo-serv-p",
+      "grade": "MGO",
+      "rob": 86.8
+    },
+    {
+      "tankId": "mgo-drain",
+      "grade": "MGO",
+      "rob": 6
+    }
+  ]
+}

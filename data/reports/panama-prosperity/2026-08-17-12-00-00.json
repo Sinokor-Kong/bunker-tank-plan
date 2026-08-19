@@ -1,0 +1,61 @@
+{
+  "vesselId": "panama-prosperity",
+  "reportDate": "2026-08-17T12:00:00",
+  "meta": {
+    "position": "BASRAH",
+    "condition": "LOAD PORT",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "do-tank-p",
+      "grade": "LSMGO",
+      "rob": 245.1
+    },
+    {
+      "tankId": "no1-fo-p",
+      "grade": "HSFO",
+      "rob": 1735.6
+    },
+    {
+      "tankId": "do-serv-p",
+      "grade": "LSMGO",
+      "rob": 42.8
+    },
+    {
+      "tankId": "fo-sett-p",
+      "grade": "LSFO",
+      "rob": 3.9
+    },
+    {
+      "tankId": "fo-serv-p",
+      "grade": "LSFO",
+      "rob": 30.3
+    },
+    {
+      "tankId": "lsfo-serv-p",
+      "grade": "HSFO",
+      "rob": 88.4
+    },
+    {
+      "tankId": "lsfo-sett-p",
+      "grade": "HSFO",
+      "rob": 45
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HSFO",
+      "rob": 13.26
+    },
+    {
+      "tankId": "no3-fo-s",
+      "grade": "HSFO",
+      "rob": 0
+    },
+    {
+      "tankId": "no2-fo-s",
+      "grade": "LSFO",
+      "rob": 1.3
+    }
+  ]
+}

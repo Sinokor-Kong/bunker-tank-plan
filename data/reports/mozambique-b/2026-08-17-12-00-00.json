@@ -1,0 +1,76 @@
+{
+  "vesselId": "mozambique-b",
+  "reportDate": "2026-08-17T12:00:00",
+  "meta": {
+    "position": "AT SEA",
+    "condition": "-",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no2-mgo-p",
+      "grade": "MGO",
+      "rob": 229.44
+    },
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "HFO",
+      "rob": 1087.77
+    },
+    {
+      "tankId": "ls-hfo-p",
+      "grade": "LSHFO",
+      "rob": 412.77
+    },
+    {
+      "tankId": "no1-mgo-s",
+      "grade": "MGO",
+      "rob": 197.31
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "HFO",
+      "rob": 1766.98
+    },
+    {
+      "tankId": "no1-hfo-s",
+      "grade": "HFO",
+      "rob": 1.61
+    },
+    {
+      "tankId": "fo-sett",
+      "grade": "HFO",
+      "rob": 102.67
+    },
+    {
+      "tankId": "fo-serv",
+      "grade": "HFO",
+      "rob": 112.1
+    },
+    {
+      "tankId": "ls-fo-sett",
+      "grade": "LSHFO",
+      "rob": 0.75
+    },
+    {
+      "tankId": "ls-fo-serv",
+      "grade": "LSHFO",
+      "rob": 0.15
+    },
+    {
+      "tankId": "overflow",
+      "grade": "HFO",
+      "rob": 0.2
+    },
+    {
+      "tankId": "mgo-serv-p",
+      "grade": "MGO",
+      "rob": 87.25
+    },
+    {
+      "tankId": "mgo-drain",
+      "grade": "MGO",
+      "rob": 6
+    }
+  ]
+}

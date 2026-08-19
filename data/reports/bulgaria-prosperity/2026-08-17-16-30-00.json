@@ -1,0 +1,76 @@
+{
+  "vesselId": "bulgaria-prosperity",
+  "reportDate": "2026-08-17T16:30:00",
+  "meta": {
+    "position": "AT SBM",
+    "condition": "-",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "outer-hfo-p",
+      "grade": "HSFO",
+      "rob": 1246.5
+    },
+    {
+      "tankId": "inner-hfo-p",
+      "grade": "VLSFO",
+      "rob": 159.38
+    },
+    {
+      "tankId": "mdo-stor-p",
+      "grade": "MGO",
+      "rob": 89.7
+    },
+    {
+      "tankId": "mdo-serv-p",
+      "grade": "MGO",
+      "rob": 50.7
+    },
+    {
+      "tankId": "hfo-serv-p",
+      "grade": "HSFO",
+      "rob": 86.98
+    },
+    {
+      "tankId": "hfo-sett-p",
+      "grade": "HSFO",
+      "rob": 124.05
+    },
+    {
+      "tankId": "mdo-sett-p",
+      "grade": "MGO",
+      "rob": 67.6
+    },
+    {
+      "tankId": "ls-hfo-sett-p",
+      "grade": "VLSFO",
+      "rob": 89.3
+    },
+    {
+      "tankId": "ls-hfo-serv-p",
+      "grade": "VLSFO",
+      "rob": 55.1
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HSFO",
+      "rob": 9.75
+    },
+    {
+      "tankId": "outer-hfo-s",
+      "grade": "HSFO",
+      "rob": 1376.8
+    },
+    {
+      "tankId": "inner-hfo-s",
+      "grade": "HSFO",
+      "rob": 41.4
+    },
+    {
+      "tankId": "mdo-stor-s",
+      "grade": "MGO",
+      "rob": 179.8
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+name: Parse bunker upload
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "uploads/**"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: parse-bunker-upload
+  cancel-in-progress: false
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-save xlsx
+      - name: Parse uploads with Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/parse.mjs
+      - name: Open PR with parsed result
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "bunker: auto-parsed vessel/report data"
+          branch: auto/bunker-parse-${{ github.run_id }}
+          title: "Bunker data update (auto-parsed, needs review)"
+          body: |
+            GitHub Actions가 Claude API로 자동 분석한 결과입니다.
+            병합 전에 반드시 ROB 수치와 Tank 구성이 실제 Report/Capacity Plan과 일치하는지 확인하세요.
+            (자동 판단이 어려운 예외 케이스 -- 밀도 역산, 이름과 다른 Grade 지정, 특이 Tank 배치 등 -- 는 Actions 로그의 [parse] 메시지를 참고하세요.)
+          delete-branch: true

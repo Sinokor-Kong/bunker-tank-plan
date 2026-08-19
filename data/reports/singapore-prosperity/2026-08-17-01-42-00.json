@@ -1,0 +1,71 @@
+{
+  "vesselId": "singapore-prosperity",
+  "reportDate": "2026-08-17T01:42:00",
+  "meta": {
+    "position": "At Sea CSOP",
+    "condition": "-",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no1-fot-p",
+      "grade": "HFO",
+      "rob": 1744.1
+    },
+    {
+      "tankId": "no2-fot-p",
+      "grade": "HFO",
+      "rob": 1640.1
+    },
+    {
+      "tankId": "no2-fot-s",
+      "grade": "HFO",
+      "rob": 151.8
+    },
+    {
+      "tankId": "hfo-sett",
+      "grade": "HFO",
+      "rob": 27.5
+    },
+    {
+      "tankId": "hfo-serv",
+      "grade": "HFO",
+      "rob": 44
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HFO",
+      "rob": 9.55
+    },
+    {
+      "tankId": "no1-fot-s",
+      "grade": "LSFO",
+      "rob": 14.8
+    },
+    {
+      "tankId": "lsfo-sett",
+      "grade": "LSFO",
+      "rob": 0
+    },
+    {
+      "tankId": "lsfo-serv",
+      "grade": "LSFO",
+      "rob": 0
+    },
+    {
+      "tankId": "do-t-s",
+      "grade": "LSMGO",
+      "rob": 62.5
+    },
+    {
+      "tankId": "no1-do-serv-s",
+      "grade": "LSMGO",
+      "rob": 11.2
+    },
+    {
+      "tankId": "no2-do-serv-s",
+      "grade": "LSMGO",
+      "rob": 47
+    }
+  ]
+}

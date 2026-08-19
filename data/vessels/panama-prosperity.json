@@ -1,0 +1,206 @@
+{
+  "vesselId": "panama-prosperity",
+  "vesselName": "M/T PANAMA PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "do-tank-p",
+      "name": "DIESEL OIL TANK (P)",
+      "group": "PORT",
+      "capacity": 391.9,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 120,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "no1-fo-p",
+      "name": "NO.1 FUEL OIL TANK (P)",
+      "group": "PORT",
+      "capacity": 2487,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 726,
+        "y": 130
+      },
+      "size": {
+        "w": 360,
+        "h": 130
+      },
+      "order": 2
+    },
+    {
+      "id": "do-serv-p",
+      "name": "DIESEL OIL SERV.TANK (P)",
+      "group": "CL",
+      "capacity": 65.5,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 48,
+        "h": 117
+      },
+      "order": 3
+    },
+    {
+      "id": "fo-sett-p",
+      "name": "F.O.SETT.TANK (P)",
+      "group": "CL",
+      "capacity": 81,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 4
+    },
+    {
+      "id": "fo-serv-p",
+      "name": "F.O.SERV.TANK (P)",
+      "group": "CL",
+      "capacity": 100.8,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 726,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 5
+    },
+    {
+      "id": "lsfo-serv-p",
+      "name": "LSFO.SERV.TANK (P)",
+      "group": "CL",
+      "capacity": 100.8,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 6
+    },
+    {
+      "id": "lsfo-sett-p",
+      "name": "LSFO.SETT.TANK (P)",
+      "group": "CL",
+      "capacity": 80.7,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 966,
+        "y": 328
+      },
+      "size": {
+        "w": 96,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "fo-overflow",
+      "name": "F.O.OVERFLOW TANK (P)",
+      "group": "CL",
+      "capacity": 58.1,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 8,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "no3-fo-s",
+      "name": "NO.3 FUEL OIL TANK (S)",
+      "group": "STBD",
+      "capacity": 1299,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      },
+      "order": 9
+    },
+    {
+      "id": "no2-fo-s",
+      "name": "NO.2 FUEL OIL TANK (S)",
+      "group": "STBD",
+      "capacity": 2097.5,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 846,
+        "y": 390
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      },
+      "order": 10
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

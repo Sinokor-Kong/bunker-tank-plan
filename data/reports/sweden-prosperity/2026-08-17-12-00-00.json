@@ -1,0 +1,71 @@
+{
+  "vesselId": "sweden-prosperity",
+  "reportDate": "2026-08-17T12:00:00",
+  "meta": {
+    "position": "-",
+    "condition": "-",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "HFO",
+      "rob": 7.86
+    },
+    {
+      "tankId": "ls-hfo-p",
+      "grade": "HFO",
+      "rob": 6.74
+    },
+    {
+      "tankId": "hfo-sett",
+      "grade": "HFO",
+      "rob": 100.1
+    },
+    {
+      "tankId": "hfo-serv",
+      "grade": "HFO",
+      "rob": 158
+    },
+    {
+      "tankId": "ls-hfo-sett",
+      "grade": "HFO",
+      "rob": 0.1
+    },
+    {
+      "tankId": "ls-hfo-serv",
+      "grade": "HFO",
+      "rob": 0.1
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HFO",
+      "rob": 2.04
+    },
+    {
+      "tankId": "mdo-stor-p",
+      "grade": "MGO",
+      "rob": 7.7
+    },
+    {
+      "tankId": "mdo-serv-p",
+      "grade": "MGO",
+      "rob": 63.25
+    },
+    {
+      "tankId": "mdo-stor-s",
+      "grade": "MGO",
+      "rob": 131.2
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "HFO",
+      "rob": 1632.6
+    },
+    {
+      "tankId": "no1-hfo-s",
+      "grade": "HFO",
+      "rob": 1656.54
+    }
+  ]
+}

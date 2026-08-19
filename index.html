@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunker Plan Console</title>
+<style>
+  :root {
+    --bg: #eef1f5;
+    --surface: #ffffff;
+    --surface-2: #f6f8fa;
+    --border: #d7dee6;
+    --ink: #16212c;
+    --ink-muted: #5c6b7a;
+    --accent: #2f6690;
+    --accent-ink: #ffffff;
+    --accent-soft: #e4edf3;
+    --chip-border: #c7d1da;
+    --danger-bg: #fbe7e4;
+    --danger-border: #eab3aa;
+    --danger-ink: #7a2418;
+    --warn-bg: #fff6e0;
+    --warn-border: #f0d485;
+    --warn-ink: #6b5205;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d141d; --surface: #141d29; --surface-2: #101823; --border: #2a3a4c;
+      --ink: #e7edf3; --ink-muted: #91a2b3; --accent: #6bacd6; --accent-ink: #06131d;
+      --accent-soft: #1b2c3d; --chip-border: #33495e; --danger-bg: #3a1e1a; --danger-border: #6b352a;
+      --danger-ink: #f3b3a6; --warn-bg: #372c10; --warn-border: #6b551f; --warn-ink: #f0d485;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d141d; --surface: #141d29; --surface-2: #101823; --border: #2a3a4c;
+    --ink: #e7edf3; --ink-muted: #91a2b3; --accent: #6bacd6; --accent-ink: #06131d;
+    --accent-soft: #1b2c3d; --chip-border: #33495e; --danger-bg: #3a1e1a; --danger-border: #6b352a;
+    --danger-ink: #f3b3a6; --warn-bg: #372c10; --warn-border: #6b551f; --warn-ink: #f0d485;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .console { max-width: 1600px; margin: 0 auto; }
+
+  .console-header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .console-title { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); }
+  .vessel-picker { display: flex; align-items: center; gap: 10px; }
+  .vessel-picker label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .picker-group { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .console-select, .console-input {
+    font-family: inherit; font-size: 15px; font-weight: 600; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 4px; padding: 7px 12px;
+  }
+  .console-select {
+    padding-right: 32px; appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%), linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
+    background-position: calc(100% - 16px) center, calc(100% - 11px) center; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; cursor: pointer;
+  }
+  .console-select:focus-visible, .console-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  h1#vessel-name { font-size: 26px; font-weight: 800; letter-spacing: -0.01em; text-wrap: balance; margin: 2px 0 16px; }
+
+  #errors, #warnings { display: none; border-radius: 5px; padding: 12px 16px; margin-bottom: 12px; font-size: 13.5px; line-height: 1.5; }
+  #errors { background: var(--danger-bg); border: 1px solid var(--danger-border); color: var(--danger-ink); }
+  #warnings { background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-ink); }
+  #errors ul, #warnings ul { margin: 6px 0 0; padding-left: 18px; }
+
+  #main-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 20px; align-items: stretch; }
+  #plan-container { width: 100%; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: #ffffff; }
+  #plan-container svg { display: block; }
+
+  #table-container { width: 100%; max-width: 840px; overflow-x: auto; }
+  .rob-table { border-collapse: collapse; width: 100%; font-size: 19px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .rob-table th, .rob-table td { border: 1px solid var(--border); padding: 11px 14px; text-align: left; }
+  .rob-table th { background: var(--surface-2); color: var(--ink-muted); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+  .rob-table td { font-family: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace; }
+  .rob-table td:first-child { font-family: inherit; }
+  .rob-table td.num { text-align: right; }
+  .rob-table tfoot td { font-weight: 700; background: var(--surface-2); font-family: inherit; }
+  .rob-table tfoot td.num { font-family: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace; }
+
+  #totals { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .total-chip { display: inline-flex; align-items: baseline; gap: 6px; background: var(--surface-2); border: 1px solid var(--chip-border); border-radius: 4px; padding: 5px 12px; font-size: 13px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .total-chip b { color: var(--ink); font-family: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace; font-size: 13.5px; }
+  .total-chip--sum { background: var(--accent-soft); border-color: var(--accent); }
+  .total-chip--sum b { color: var(--ink); }
+
+  .footnote { margin-top: 14px; font-size: 12px; color: var(--ink-muted); line-height: 1.6; }
+  .rob-as-of { margin: -10px 0 16px; font-size: 14px; font-weight: 600; color: var(--accent); }
+
+  /* --- 업로더 패널 --- */
+  details#uploader-panel { margin-top: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 4px 18px 18px; }
+  details#uploader-panel summary { cursor: pointer; padding: 14px 0; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-muted); }
+  .uploader-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .uploader-row label { font-size: 13px; color: var(--ink-muted); min-width: 150px; }
+  .drop-zones { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .drop-zone { flex: 1 1 260px; border: 2px dashed var(--border); border-radius: 6px; padding: 22px 14px; text-align: center; cursor: pointer; background: var(--surface-2); }
+  .drop-zone:hover, .drop-zone--over { border-color: var(--accent); background: var(--accent-soft); }
+  .drop-zone__title { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
+  .drop-zone__label { font-size: 13px; color: var(--ink); word-break: break-all; }
+  .uploader-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  button.primary-btn { font-family: inherit; font-weight: 700; font-size: 14px; padding: 9px 18px; border-radius: 4px; border: none; background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+  button.secondary-btn { font-family: inherit; font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .upload-status { font-size: 13px; margin-top: 4px; }
+  .upload-status--pending { color: var(--ink-muted); }
+  .upload-status--success { color: #2f9e5c; }
+  .upload-status--warn { color: var(--warn-ink); }
+  .upload-status--error { color: var(--danger-ink); }
+</style>
+</head>
+<body>
+<div class="console">
+  <div class="console-header">
+    <div class="console-title">Bunker Plan Console</div>
+    <div class="picker-group">
+      <div class="vessel-picker">
+        <label for="vessel-select">Vessel</label>
+        <select id="vessel-select" class="console-select"></select>
+      </div>
+      <div class="vessel-picker">
+        <label for="date-select">Date</label>
+        <select id="date-select" class="console-select"></select>
+      </div>
+    </div>
+  </div>
+
+  <h1 id="vessel-name">-</h1>
+  <div class="rob-as-of" id="rob-as-of"></div>
+
+  <div id="errors"></div>
+  <div id="warnings"></div>
+
+  <div id="main-panel">
+    <div id="plan-container"></div>
+    <div id="table-container"></div>
+  </div>
+  <div id="totals"></div>
+  <div class="footnote">Grade별 표시 규칙은 각 선박 Report의 원본 구분을 그대로 따릅니다. 화면에는 ① 선체 외판에 붙어 있고 ② Storage Tank이며 ③ 100 m³ 이상인 Tank만 표시되고, Sett./Serv./Overflow Tank나 외판에 붙어있지 않은 이중저 Storage Tank는 용량과 무관하게 생략됩니다 (합계에는 항상 포함).</div>
+
+  <details id="uploader-panel">
+    <summary>+ 선박 추가 / ROB Report 업데이트 (드래그 앤 드롭)</summary>
+
+    <div class="uploader-row">
+      <label for="gh-pat-input">GitHub Token</label>
+      <input type="password" id="gh-pat-input" class="console-input" style="flex:1; min-width:240px;" placeholder="이 저장소 전용 fine-grained PAT (Contents/Pull requests: R&W, Actions: Read)">
+      <button type="button" id="gh-pat-save" class="secondary-btn">저장</button>
+    </div>
+
+    <form id="uploader-form">
+      <div class="uploader-row">
+        <label for="upload-mode">작업 종류</label>
+        <select id="upload-mode" class="console-select">
+          <option value="existing">기존 선박 업데이트 (새 ROB Report)</option>
+          <option value="new">신규 선박 추가</option>
+        </select>
+      </div>
+      <div class="uploader-row" id="upload-existing-row">
+        <label for="upload-existing-vessel">선박 선택</label>
+        <select id="upload-existing-vessel" class="console-select"></select>
+      </div>
+      <div class="uploader-row" id="upload-new-row" style="display:none;">
+        <label for="upload-new-vessel-name">신규 선박명</label>
+        <input type="text" id="upload-new-vessel-name" class="console-input" placeholder="예: M/T EXAMPLE PROSPERITY">
+      </div>
+
+      <div class="drop-zones">
+        <div class="drop-zone" id="drop-zone-capacity">
+          <div class="drop-zone__title">Capacity Plan (Drawing)</div>
+          <div class="drop-zone__label" data-placeholder="PDF를 드래그하거나 클릭해서 선택 (신규 선박은 필수)">PDF를 드래그하거나 클릭해서 선택 (신규 선박은 필수)</div>
+          <input type="file" id="input-capacity" accept=".pdf" hidden>
+        </div>
+        <div class="drop-zone" id="drop-zone-rob">
+          <div class="drop-zone__title">Bunker ROB Report</div>
+          <div class="drop-zone__label" data-placeholder="Excel 또는 PDF를 드래그하거나 클릭해서 선택 (필수)">Excel 또는 PDF를 드래그하거나 클릭해서 선택 (필수)</div>
+          <input type="file" id="input-rob" accept=".xlsx,.xls,.pdf" hidden>
+        </div>
+      </div>
+
+      <div class="uploader-actions">
+        <button type="submit" class="primary-btn">업로드 및 분석 시작</button>
+        <span class="upload-status" id="upload-status"></span>
+      </div>
+    </form>
+    <div class="footnote">Capacity Plan(도면)이 마지막 업로드와 동일하면(해시 비교) 자동으로 재업로드를 생략하고 기존 스케치를 재사용합니다. 분석은 GitHub Actions에서 수행되며, 완료되면 검토용 Pull Request가 생성됩니다 — 병합해야 사이트에 반영됩니다.</div>
+  </details>
+</div>
+
+<script src="config/grades.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/render.js"></script>
+<script src="js/table.js"></script>
+<script src="js/app.js"></script>
+<script src="js/uploader.js"></script>
+</body>
+</html>

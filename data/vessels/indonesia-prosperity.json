@@ -1,0 +1,291 @@
+{
+  "vesselId": "indonesia-prosperity",
+  "vesselName": "M/T INDONESIA PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "mgo-stor-p",
+      "name": "MGO.STOR.T. (P)",
+      "group": "PORT",
+      "capacity": 342.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 168,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "no2-hfo-p",
+      "name": "No.2 H.F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 1646.9,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1014,
+        "y": 130
+      },
+      "size": {
+        "w": 432,
+        "h": 130
+      },
+      "order": 2
+    },
+    {
+      "id": "no1-hfo-p",
+      "name": "No.1 H.F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 1527.1,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1446,
+        "y": 130
+      },
+      "size": {
+        "w": 144,
+        "h": 130
+      },
+      "order": 3
+    },
+    {
+      "id": "mgo-serv-p",
+      "name": "MGO.SERV.T. (P)",
+      "group": "CL",
+      "capacity": 363.1,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 774,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 4
+    },
+    {
+      "id": "mdo-serv-p",
+      "name": "MDO.SERV.T. (P)",
+      "group": "CL",
+      "capacity": 213.6,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 894,
+        "y": 267
+      },
+      "size": {
+        "w": 60,
+        "h": 117
+      },
+      "order": 5
+    },
+    {
+      "id": "mdo-sett-p",
+      "name": "MDO.SETT.T. (P)",
+      "group": "CL",
+      "capacity": 235.9,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 954,
+        "y": 267
+      },
+      "size": {
+        "w": 60,
+        "h": 117
+      },
+      "order": 6
+    },
+    {
+      "id": "ls-hfo-serv-p",
+      "name": "L.S.H.F.O.SERV.T. (P)",
+      "group": "CL",
+      "capacity": 116,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1134,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "ls-hfo-sett-p",
+      "name": "L.S.H.F.O.SETT.T. (P)",
+      "group": "CL",
+      "capacity": 121.8,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1194,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 8
+    },
+    {
+      "id": "fo-overflow",
+      "name": "F.O.OVERF.T. (P)",
+      "group": "CL",
+      "capacity": 58.5,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 1230,
+        "y": 328
+      },
+      "size": {
+        "w": 96,
+        "h": 56
+      },
+      "order": 9,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "hfo-serv-p",
+      "name": "H.F.O.SERV.T. (P)",
+      "group": "CL",
+      "capacity": 158,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1254,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      },
+      "order": 10
+    },
+    {
+      "id": "hfo-sett-p",
+      "name": "H.F.O.SETT.T. (P)",
+      "group": "CL",
+      "capacity": 263.4,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1326,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 11
+    },
+    {
+      "id": "mdo-stor-s",
+      "name": "MDO.STOR.T. (S)",
+      "group": "STBD",
+      "capacity": 342.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 168,
+        "h": 130
+      },
+      "order": 12
+    },
+    {
+      "id": "no2-hfo-s",
+      "name": "No.2 H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1939.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 774,
+        "y": 390
+      },
+      "size": {
+        "w": 480,
+        "h": 130
+      },
+      "order": 13
+    },
+    {
+      "id": "ls-hfo-s",
+      "name": "L.S H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1179.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1254,
+        "y": 390
+      },
+      "size": {
+        "w": 192,
+        "h": 130
+      },
+      "order": 14
+    },
+    {
+      "id": "no1-hfo-s",
+      "name": "No.1 H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1527.1,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1446,
+        "y": 390
+      },
+      "size": {
+        "w": 144,
+        "h": 130
+      },
+      "order": 15
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

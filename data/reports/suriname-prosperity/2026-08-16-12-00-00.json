@@ -1,0 +1,61 @@
+{
+  "vesselId": "suriname-prosperity",
+  "reportDate": "2026-08-16T12:00:00",
+  "meta": {
+    "position": "AT ANCHOR",
+    "condition": "BALLAST",
+    "trim": 3.5
+  },
+  "rob": [
+    {
+      "tankId": "no1-fo-p",
+      "grade": "VLSFO",
+      "rob": 2052.91
+    },
+    {
+      "tankId": "no2-fo-s",
+      "grade": "VLSFO",
+      "rob": 1855.51
+    },
+    {
+      "tankId": "no3-fo-s",
+      "grade": "LSMGO",
+      "rob": 612.57
+    },
+    {
+      "tankId": "no1-hfo-sett",
+      "grade": "LSMGO",
+      "rob": 38
+    },
+    {
+      "tankId": "no1-hfo-serv",
+      "grade": "LSMGO",
+      "rob": 39
+    },
+    {
+      "tankId": "no2-hfo-sett",
+      "grade": "VLSFO",
+      "rob": 58
+    },
+    {
+      "tankId": "no2-hfo-serv",
+      "grade": "VLSFO",
+      "rob": 62
+    },
+    {
+      "tankId": "do-tank-s",
+      "grade": "LSMGO",
+      "rob": 339.64
+    },
+    {
+      "tankId": "do-serv-tank-s",
+      "grade": "LSMGO",
+      "rob": 50
+    },
+    {
+      "tankId": "hfo-overflow",
+      "grade": "VLSFO",
+      "rob": 29.6
+    }
+  ]
+}

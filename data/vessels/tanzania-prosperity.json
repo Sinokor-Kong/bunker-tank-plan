@@ -1,0 +1,240 @@
+{
+  "vesselId": "tanzania-prosperity",
+  "vesselName": "M/T TANZANIA PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no2-hfo-p",
+      "name": "No.2 H.F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 2112.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 360,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "no1-hfo-p",
+      "name": "No.1 H.F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 1892.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 966,
+        "y": 130
+      },
+      "size": {
+        "w": 120,
+        "h": 130
+      },
+      "order": 2
+    },
+    {
+      "id": "hfo-drain-p",
+      "name": "HFO DRAIN TANK (P)",
+      "group": "CL",
+      "capacity": 20.5,
+      "role": "DRAIN",
+      "onShell": false,
+      "position": {
+        "x": 438,
+        "y": 328
+      },
+      "size": {
+        "w": 168,
+        "h": 56
+      },
+      "order": 3
+    },
+    {
+      "id": "hfo-serv-p",
+      "name": "No.2 H.F.O.SERV.T. (P)",
+      "group": "CL",
+      "capacity": 97.1,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 144,
+        "h": 117
+      },
+      "order": 4
+    },
+    {
+      "id": "hfo-sett-p",
+      "name": "No.2 H.F.O.SETT.T. (P)",
+      "group": "CL",
+      "capacity": 111.1,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 328
+      },
+      "size": {
+        "w": 144,
+        "h": 56
+      },
+      "order": 5
+    },
+    {
+      "id": "lshfo-serv-p",
+      "name": "No.1 L.S.H.F.O.SERV.T. (P)",
+      "group": "CL",
+      "capacity": 64.7,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 750,
+        "y": 267
+      },
+      "size": {
+        "w": 96,
+        "h": 117
+      },
+      "order": 6
+    },
+    {
+      "id": "lshfo-sett-p",
+      "name": "No.1 L.S.H.F.O.SETT.T. (P)",
+      "group": "CL",
+      "capacity": 80.9,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "fo-overflow",
+      "name": "FO OVERFLOW TANK (P)",
+      "group": "CL",
+      "capacity": 49.6,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 8,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "no3-hfo-s",
+      "name": "No.3 H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1801.5,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 966,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 130
+      },
+      "order": 9
+    },
+    {
+      "id": "no4-lshfo-s",
+      "name": "No.4 L.S.H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1963.8,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 360,
+        "h": 130
+      },
+      "order": 10
+    },
+    {
+      "id": "do-t-s",
+      "name": "D.O.T. (S)",
+      "group": "STBD",
+      "capacity": 438.1,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 86
+      },
+      "order": 11
+    },
+    {
+      "id": "do-serv-s",
+      "name": "D.O.SERV.T. (S)",
+      "group": "STBD",
+      "capacity": 70.8,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 476
+      },
+      "size": {
+        "w": 120,
+        "h": 44
+      },
+      "order": 12
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

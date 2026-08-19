@@ -1,0 +1,240 @@
+{
+  "vesselId": "egypt-prosperity",
+  "vesselName": "M/T EGYPT PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no2-hfo-p",
+      "name": "NO.2 H.F.O.T (P)",
+      "group": "PORT",
+      "capacity": 1779.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 654,
+        "y": 130
+      },
+      "size": {
+        "w": 600,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "no1-hfo-p",
+      "name": "NO.1 H.F.O.T (P)",
+      "group": "PORT",
+      "capacity": 2354,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1254,
+        "y": 130
+      },
+      "size": {
+        "w": 168,
+        "h": 130
+      },
+      "order": 2
+    },
+    {
+      "id": "mdo-serv-p",
+      "name": "M.D.O.SERV.T (P)",
+      "group": "CL",
+      "capacity": 113.7,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 654,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 3
+    },
+    {
+      "id": "hfo-serv-p",
+      "name": "H.F.O.SERV.T (P)",
+      "group": "CL",
+      "capacity": 125.7,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1086,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      },
+      "order": 4
+    },
+    {
+      "id": "hfo-sett-p",
+      "name": "H.F.O.SETT.T (P)",
+      "group": "CL",
+      "capacity": 167.6,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1158,
+        "y": 267
+      },
+      "size": {
+        "w": 96,
+        "h": 117
+      },
+      "order": 5
+    },
+    {
+      "id": "mdo-sett-p",
+      "name": "M.D.O.SETT.T (P)",
+      "group": "CL",
+      "capacity": 145.1,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 654,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 6
+    },
+    {
+      "id": "ls-hfo-sett-p",
+      "name": "L.S.HFO.SETT.T (P)",
+      "group": "CL",
+      "capacity": 104.8,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 966,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "ls-hfo-serv-p",
+      "name": "L.S.HFO.SERV.T (P)",
+      "group": "CL",
+      "capacity": 104.8,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1026,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 8
+    },
+    {
+      "id": "fo-overflow",
+      "name": "FO OVERFLOW TANK",
+      "group": "CL",
+      "capacity": 69,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 1038,
+        "y": 328
+      },
+      "size": {
+        "w": 96,
+        "h": 56
+      },
+      "order": 9,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "mdo-stor-s",
+      "name": "M.D.O.STOR.T (S)",
+      "group": "STBD",
+      "capacity": 288.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 130
+      },
+      "order": 10
+    },
+    {
+      "id": "no2-hfo-s",
+      "name": "NO.2 H.F.O.T (S)",
+      "group": "STBD",
+      "capacity": 2370.4,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 726,
+        "y": 390
+      },
+      "size": {
+        "w": 528,
+        "h": 130
+      },
+      "order": 11
+    },
+    {
+      "id": "no1-hfo-s",
+      "name": "NO.1 H.F.O.T (S)",
+      "group": "STBD",
+      "capacity": 2354,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1254,
+        "y": 390
+      },
+      "size": {
+        "w": 168,
+        "h": 130
+      },
+      "order": 12
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

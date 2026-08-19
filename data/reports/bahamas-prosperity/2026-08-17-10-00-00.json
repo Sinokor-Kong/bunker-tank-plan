@@ -1,0 +1,66 @@
+{
+  "vesselId": "bahamas-prosperity",
+  "reportDate": "2026-08-17T10:00:00",
+  "meta": {
+    "position": "-",
+    "condition": "-",
+    "trim": 2.3
+  },
+  "rob": [
+    {
+      "tankId": "no1-hfo-p",
+      "grade": "HFO",
+      "rob": 2424.7
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "HFO",
+      "rob": 1015.3
+    },
+    {
+      "tankId": "hfo-sett",
+      "grade": "HFO",
+      "rob": 44
+    },
+    {
+      "tankId": "hfo-serv",
+      "grade": "HFO",
+      "rob": 100
+    },
+    {
+      "tankId": "ls-hfo-sett",
+      "grade": "HFO",
+      "rob": 60
+    },
+    {
+      "tankId": "ls-hfo-serv",
+      "grade": "HFO",
+      "rob": 0
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HFO",
+      "rob": 14
+    },
+    {
+      "tankId": "ls-hfo-s",
+      "grade": "LSMGO",
+      "rob": 615.4
+    },
+    {
+      "tankId": "mdo-storage-s",
+      "grade": "LSMGO",
+      "rob": 0
+    },
+    {
+      "tankId": "mdo-service-s",
+      "grade": "LSMGO",
+      "rob": 32
+    },
+    {
+      "tankId": "gas-oil",
+      "grade": "LSMGO",
+      "rob": 104.4
+    }
+  ]
+}

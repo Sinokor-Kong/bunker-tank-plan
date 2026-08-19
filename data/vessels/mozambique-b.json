@@ -1,0 +1,257 @@
+{
+  "vesselId": "mozambique-b",
+  "vesselName": "M/T MOZAMBIQUE B",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW / DRAIN)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no2-mgo-p",
+      "name": "N°2 MGO Tk (P)",
+      "group": "PORT",
+      "capacity": 411.3,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "no2-hfo-p",
+      "name": "N°2 HFO tk (P)",
+      "group": "PORT",
+      "capacity": 1341.4,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 846,
+        "y": 130
+      },
+      "size": {
+        "w": 408,
+        "h": 130
+      },
+      "order": 2
+    },
+    {
+      "id": "ls-hfo-p",
+      "name": "LS HFO tk (P)",
+      "group": "PORT",
+      "capacity": 829.8,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1254,
+        "y": 130
+      },
+      "size": {
+        "w": 72,
+        "h": 130
+      },
+      "order": 3
+    },
+    {
+      "id": "fo-serv",
+      "name": "FO Serv.",
+      "group": "CL",
+      "capacity": 112.2,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1086,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      },
+      "order": 4
+    },
+    {
+      "id": "fo-sett",
+      "name": "FO Sett.",
+      "group": "CL",
+      "capacity": 149.6,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1158,
+        "y": 267
+      },
+      "size": {
+        "w": 96,
+        "h": 117
+      },
+      "order": 5
+    },
+    {
+      "id": "ls-fo-sett",
+      "name": "LS FO Sett.",
+      "group": "CL",
+      "capacity": 94.5,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 966,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 6
+    },
+    {
+      "id": "ls-fo-serv",
+      "name": "LS FO Serv.",
+      "group": "CL",
+      "capacity": 97.9,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1026,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "overflow",
+      "name": "Overflow",
+      "group": "CL",
+      "capacity": 50,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 1038,
+        "y": 328
+      },
+      "size": {
+        "w": 48,
+        "h": 56
+      },
+      "order": 8,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "mgo-serv-p",
+      "name": "MGO Serv.",
+      "group": "CL",
+      "capacity": 99.8,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 9
+    },
+    {
+      "id": "mgo-drain",
+      "name": "MGO Drain tk",
+      "group": "CL",
+      "capacity": 15,
+      "role": "DRAIN",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 328
+      },
+      "size": {
+        "w": 48,
+        "h": 56
+      },
+      "order": 10
+    },
+    {
+      "id": "no1-mgo-s",
+      "name": "N°1 MGO Tk (S)",
+      "group": "STBD",
+      "capacity": 229,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 130
+      },
+      "order": 11
+    },
+    {
+      "id": "no2-hfo-s",
+      "name": "N°2 HFO tk (S)",
+      "group": "STBD",
+      "capacity": 2077.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 726,
+        "y": 390
+      },
+      "size": {
+        "w": 528,
+        "h": 130
+      },
+      "order": 12
+    },
+    {
+      "id": "no1-hfo-s",
+      "name": "N°1 HFO tk (S)",
+      "group": "STBD",
+      "capacity": 829.8,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1254,
+        "y": 390
+      },
+      "size": {
+        "w": 72,
+        "h": 130
+      },
+      "order": 13
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

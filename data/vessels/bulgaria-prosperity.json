@@ -1,0 +1,257 @@
+{
+  "vesselId": "bulgaria-prosperity",
+  "vesselName": "M/T BULGARIA PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "outer-hfo-p",
+      "name": "OUTER H.F.O.T (P)",
+      "group": "PORT",
+      "capacity": 1748.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 80
+      },
+      "size": {
+        "w": 648,
+        "h": 90
+      },
+      "order": 1
+    },
+    {
+      "id": "inner-hfo-p",
+      "name": "INNER H.F.O.T (P)",
+      "group": "PORT",
+      "capacity": 1786.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 726,
+        "y": 170
+      },
+      "size": {
+        "w": 528,
+        "h": 90
+      },
+      "order": 2
+    },
+    {
+      "id": "mdo-stor-p",
+      "name": "M.D.O.STOR.T (P)",
+      "group": "PORT",
+      "capacity": 118.5,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 80
+      },
+      "size": {
+        "w": 408,
+        "h": 60
+      },
+      "order": 3
+    },
+    {
+      "id": "mdo-serv-p",
+      "name": "M.D.O.SERV.T (P)",
+      "group": "CL",
+      "capacity": 78.2,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 4
+    },
+    {
+      "id": "hfo-serv-p",
+      "name": "H.F.O.SERV.T (P)",
+      "group": "CL",
+      "capacity": 160.1,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1086,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      },
+      "order": 5
+    },
+    {
+      "id": "hfo-sett-p",
+      "name": "H.F.O.SETT.T (P)",
+      "group": "CL",
+      "capacity": 187.5,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1158,
+        "y": 267
+      },
+      "size": {
+        "w": 96,
+        "h": 117
+      },
+      "order": 6
+    },
+    {
+      "id": "mdo-sett-p",
+      "name": "M.D.O.SETT.T (P)",
+      "group": "CL",
+      "capacity": 104.4,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "ls-hfo-sett-p",
+      "name": "L.S.H.F.O.SETT.T (P)",
+      "group": "CL",
+      "capacity": 122,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1026,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 8
+    },
+    {
+      "id": "ls-hfo-serv-p",
+      "name": "L.S.H.F.O.SERV.T (P)",
+      "group": "CL",
+      "capacity": 116.3,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 966,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 9
+    },
+    {
+      "id": "fo-overflow",
+      "name": "FO OVERFLOW TANK",
+      "group": "CL",
+      "capacity": 135,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 1014,
+        "y": 328
+      },
+      "size": {
+        "w": 72,
+        "h": 56
+      },
+      "order": 10,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "inner-hfo-s",
+      "name": "INNER H.F.O.T (S)",
+      "group": "STBD",
+      "capacity": 2564.3,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 648,
+        "h": 90
+      },
+      "order": 11
+    },
+    {
+      "id": "outer-hfo-s",
+      "name": "OUTER H.F.O.T (S)",
+      "group": "STBD",
+      "capacity": 1748.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 480
+      },
+      "size": {
+        "w": 648,
+        "h": 90
+      },
+      "order": 12
+    },
+    {
+      "id": "mdo-stor-s",
+      "name": "M.D.O.STOR.T (S)",
+      "group": "STBD",
+      "capacity": 239.3,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 528,
+        "h": 60
+      },
+      "order": 13
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

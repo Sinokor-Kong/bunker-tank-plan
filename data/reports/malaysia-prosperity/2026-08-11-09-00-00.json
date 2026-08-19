@@ -1,0 +1,71 @@
+{
+  "vesselId": "malaysia-prosperity",
+  "reportDate": "2026-08-11T09:00:00",
+  "meta": {
+    "position": "-",
+    "condition": "DEPARTURE",
+    "trim": 4
+  },
+  "rob": [
+    {
+      "tankId": "no1-hfo-p",
+      "grade": "HFO",
+      "rob": 327.7
+    },
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "HFO",
+      "rob": 1973.4
+    },
+    {
+      "tankId": "no3-hfo-s",
+      "grade": "HFO",
+      "rob": 1.6
+    },
+    {
+      "tankId": "hs-sett-p",
+      "grade": "HFO",
+      "rob": 78.5
+    },
+    {
+      "tankId": "hs-serv-p",
+      "grade": "HFO",
+      "rob": 74.5
+    },
+    {
+      "tankId": "hfo-overflow",
+      "grade": "HFO",
+      "rob": 13.3
+    },
+    {
+      "tankId": "no4-lshfo-s",
+      "grade": "LSHFO",
+      "rob": 829
+    },
+    {
+      "tankId": "ls-sett-p",
+      "grade": "LSHFO",
+      "rob": 56.5
+    },
+    {
+      "tankId": "ls-serv-p",
+      "grade": "LSHFO",
+      "rob": 44.83
+    },
+    {
+      "tankId": "no1-do-s",
+      "grade": "MGO",
+      "rob": 166.1
+    },
+    {
+      "tankId": "no2-do-s",
+      "grade": "MGO",
+      "rob": 236.7
+    },
+    {
+      "tankId": "do-serv-s",
+      "grade": "MGO",
+      "rob": 66.9
+    }
+  ]
+}

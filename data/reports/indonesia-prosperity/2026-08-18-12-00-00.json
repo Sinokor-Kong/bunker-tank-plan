@@ -1,0 +1,86 @@
+{
+  "vesselId": "indonesia-prosperity",
+  "reportDate": "2026-08-18T12:00:00",
+  "meta": {
+    "position": "-",
+    "condition": "-",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "mgo-stor-p",
+      "grade": "MGO",
+      "rob": 0
+    },
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "HFO",
+      "rob": 0
+    },
+    {
+      "tankId": "no1-hfo-p",
+      "grade": "HFO",
+      "rob": 877.55
+    },
+    {
+      "tankId": "mgo-serv-p",
+      "grade": "MGO",
+      "rob": 0
+    },
+    {
+      "tankId": "mdo-serv-p",
+      "grade": "MGO",
+      "rob": 115.8
+    },
+    {
+      "tankId": "mdo-sett-p",
+      "grade": "MGO",
+      "rob": 0.69
+    },
+    {
+      "tankId": "ls-hfo-serv-p",
+      "grade": "LSHFO",
+      "rob": 49.39
+    },
+    {
+      "tankId": "ls-hfo-sett-p",
+      "grade": "LSHFO",
+      "rob": 27.14
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "HFO",
+      "rob": 7.35
+    },
+    {
+      "tankId": "hfo-serv-p",
+      "grade": "HFO",
+      "rob": 122.45
+    },
+    {
+      "tankId": "hfo-sett-p",
+      "grade": "HFO",
+      "rob": 122.45
+    },
+    {
+      "tankId": "mdo-stor-s",
+      "grade": "MGO",
+      "rob": 150.55
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "HFO",
+      "rob": 1841.84
+    },
+    {
+      "tankId": "ls-hfo-s",
+      "grade": "LSHFO",
+      "rob": 0
+    },
+    {
+      "tankId": "no1-hfo-s",
+      "grade": "HFO",
+      "rob": 1449
+    }
+  ]
+}

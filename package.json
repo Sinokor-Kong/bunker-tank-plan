@@ -1,0 +1,12 @@
+{
+  "name": "bunker-tank-plan-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "parse": "node scripts/parse.mjs",
+    "migrate-legacy": "node scripts/migrate-legacy.mjs"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}

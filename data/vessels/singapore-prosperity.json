@@ -1,0 +1,240 @@
+{
+  "vesselId": "singapore-prosperity",
+  "vesselName": "M/T SINGAPORE PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no2-fot-p",
+      "name": "NO.2 F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 1933.41,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 408,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "no1-fot-p",
+      "name": "NO.1 F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 2347.28,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1014,
+        "y": 130
+      },
+      "size": {
+        "w": 312,
+        "h": 130
+      },
+      "order": 2
+    },
+    {
+      "id": "hfo-serv",
+      "name": "H.F.O.SERV.T. (S)",
+      "group": "CL",
+      "capacity": 56.89,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1230,
+        "y": 267
+      },
+      "size": {
+        "w": 78,
+        "h": 117
+      },
+      "order": 3
+    },
+    {
+      "id": "hfo-sett",
+      "name": "H.F.O.SETT.T. (S)",
+      "group": "CL",
+      "capacity": 73.16,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1326,
+        "y": 267
+      },
+      "size": {
+        "w": 42,
+        "h": 117
+      },
+      "order": 4
+    },
+    {
+      "id": "fo-overflow",
+      "name": "F.O.OVERFLOW TANK (S)",
+      "group": "CL",
+      "capacity": 47.4,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 1014,
+        "y": 328
+      },
+      "size": {
+        "w": 144,
+        "h": 56
+      },
+      "order": 5,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "lsfo-sett",
+      "name": "LSFO SETT TK",
+      "group": "CL",
+      "capacity": 21.1,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 1158,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 6
+    },
+    {
+      "id": "lsfo-serv",
+      "name": "LSFO SERV TK",
+      "group": "CL",
+      "capacity": 41.7,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 1218,
+        "y": 328
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 7
+    },
+    {
+      "id": "no2-fot-s",
+      "name": "NO.2 F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1715.78,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 702,
+        "y": 390
+      },
+      "size": {
+        "w": 432,
+        "h": 130
+      },
+      "order": 8
+    },
+    {
+      "id": "no1-fot-s",
+      "name": "NO.1 F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1531.19,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 1134,
+        "y": 390
+      },
+      "size": {
+        "w": 192,
+        "h": 130
+      },
+      "order": 9
+    },
+    {
+      "id": "do-t-s",
+      "name": "D.O.T. (S)",
+      "group": "STBD",
+      "capacity": 659.39,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 702,
+        "y": 390
+      },
+      "size": {
+        "w": 192,
+        "h": 52
+      },
+      "order": 10
+    },
+    {
+      "id": "no1-do-serv-s",
+      "name": "NO.1 D.O.SERV.T. (S)",
+      "group": "STBD",
+      "capacity": 13.79,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 702,
+        "y": 442
+      },
+      "size": {
+        "w": 48,
+        "h": 39
+      },
+      "order": 11
+    },
+    {
+      "id": "no2-do-serv-s",
+      "name": "NO.2 D.O.SERV.T. (S)",
+      "group": "STBD",
+      "capacity": 54.89,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 702,
+        "y": 481
+      },
+      "size": {
+        "w": 96,
+        "h": 39
+      },
+      "order": 12
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

@@ -1,0 +1,223 @@
+{
+  "vesselId": "bahamas-prosperity",
+  "vesselName": "M/T BAHAMAS PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW / GAS OIL)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no1-hfo-p",
+      "name": "NO.1 HFO TANK (PORT)",
+      "group": "PORT",
+      "capacity": 3567.4,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 456,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "hfo-serv",
+      "name": "HFO SERV TANK",
+      "group": "CL",
+      "capacity": 117.7,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 726,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 2
+    },
+    {
+      "id": "hfo-sett",
+      "name": "HFO SETT TANK",
+      "group": "CL",
+      "capacity": 117.7,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 3
+    },
+    {
+      "id": "fo-overflow",
+      "name": "FO OVERFLOW TANK",
+      "group": "CL",
+      "capacity": 62.1,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 4,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "ls-hfo-serv",
+      "name": "LS HFO SERV TANK",
+      "group": "CL",
+      "capacity": 58.8,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 60,
+        "h": 56
+      },
+      "order": 5
+    },
+    {
+      "id": "gas-oil",
+      "name": "GAS OIL TANK",
+      "group": "CL",
+      "capacity": 116.1,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 328
+      },
+      "size": {
+        "w": 48,
+        "h": 56
+      },
+      "order": 6
+    },
+    {
+      "id": "ls-hfo-sett",
+      "name": "LS HFO SETT TANK",
+      "group": "CL",
+      "capacity": 58.8,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 666,
+        "y": 267
+      },
+      "size": {
+        "w": 60,
+        "h": 117
+      },
+      "order": 7
+    },
+    {
+      "id": "no2-hfo-s",
+      "name": "NO.2 HFO TANK (STBD)",
+      "group": "STBD",
+      "capacity": 2136.5,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 846,
+        "y": 390
+      },
+      "size": {
+        "w": 216,
+        "h": 130
+      },
+      "order": 8
+    },
+    {
+      "id": "ls-hfo-s",
+      "name": "LS HFO TANK (STBD)",
+      "group": "STBD",
+      "capacity": 1408.3,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      },
+      "order": 9
+    },
+    {
+      "id": "mdo-storage-s",
+      "name": "M.D.O STORAGE TANK",
+      "group": "STBD",
+      "capacity": 346.7,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 52
+      },
+      "order": 10
+    },
+    {
+      "id": "mdo-service-s",
+      "name": "M.D.O SERVICE TANK",
+      "group": "STBD",
+      "capacity": 47.9,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 442
+      },
+      "size": {
+        "w": 120,
+        "h": 52
+      },
+      "order": 11
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

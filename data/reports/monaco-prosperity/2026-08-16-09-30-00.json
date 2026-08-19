@@ -1,0 +1,76 @@
+{
+  "vesselId": "monaco-prosperity",
+  "reportDate": "2026-08-16T09:30:00",
+  "meta": {
+    "position": "ARRIVAL",
+    "condition": "-",
+    "trim": 3
+  },
+  "rob": [
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "LSHFO",
+      "rob": 668.9
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "LSHFO",
+      "rob": 1095.3
+    },
+    {
+      "tankId": "no1-hfo-s",
+      "grade": "LSHFO",
+      "rob": 30.9
+    },
+    {
+      "tankId": "hfo-serv-p",
+      "grade": "LSHFO",
+      "rob": 100
+    },
+    {
+      "tankId": "hfo-sett-p",
+      "grade": "LSHFO",
+      "rob": 115
+    },
+    {
+      "tankId": "ls-hfo-serv-p",
+      "grade": "LSHFO",
+      "rob": 66
+    },
+    {
+      "tankId": "ls-hfo-sett-p",
+      "grade": "LSHFO",
+      "rob": 39
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "LSHFO",
+      "rob": 22.9
+    },
+    {
+      "tankId": "ls-hfo-p",
+      "grade": "LSMGO",
+      "rob": 503.5
+    },
+    {
+      "tankId": "lsmgd-s",
+      "grade": "LSMGO",
+      "rob": 97
+    },
+    {
+      "tankId": "mdo-stor-s",
+      "grade": "LSMGO",
+      "rob": 83.1
+    },
+    {
+      "tankId": "mdo-serv-s",
+      "grade": "LSMGO",
+      "rob": 15.4
+    },
+    {
+      "tankId": "mdo-sett-s",
+      "grade": "LSMGO",
+      "rob": 54.8
+    }
+  ]
+}

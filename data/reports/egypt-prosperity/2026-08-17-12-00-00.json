@@ -1,0 +1,71 @@
+{
+  "vesselId": "egypt-prosperity",
+  "reportDate": "2026-08-17T12:00:00",
+  "meta": {
+    "position": "SOHAR",
+    "condition": "-",
+    "trim": 4.5
+  },
+  "rob": [
+    {
+      "tankId": "no2-hfo-p",
+      "grade": "VLSFO",
+      "rob": 1163.74
+    },
+    {
+      "tankId": "no1-hfo-p",
+      "grade": "LSHFO",
+      "rob": 835.82
+    },
+    {
+      "tankId": "mdo-serv-p",
+      "grade": "MGO",
+      "rob": 68.08
+    },
+    {
+      "tankId": "hfo-serv-p",
+      "grade": "LSHFO",
+      "rob": 103.28
+    },
+    {
+      "tankId": "hfo-sett-p",
+      "grade": "LSHFO",
+      "rob": 78.66
+    },
+    {
+      "tankId": "mdo-sett-p",
+      "grade": "MGO",
+      "rob": 119.2
+    },
+    {
+      "tankId": "ls-hfo-sett-p",
+      "grade": "VLSFO",
+      "rob": 87.93
+    },
+    {
+      "tankId": "ls-hfo-serv-p",
+      "grade": "VLSFO",
+      "rob": 30.13
+    },
+    {
+      "tankId": "fo-overflow",
+      "grade": "LSHFO",
+      "rob": 25.7
+    },
+    {
+      "tankId": "mdo-stor-s",
+      "grade": "MGO",
+      "rob": 263.6
+    },
+    {
+      "tankId": "no2-hfo-s",
+      "grade": "LSHFO",
+      "rob": 1747.19
+    },
+    {
+      "tankId": "no1-hfo-s",
+      "grade": "LSHFO",
+      "rob": 1254.09
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "vesselId": "suriname-prosperity",
+  "vesselName": "M/T SURINAME PROSPERITY",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A"
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV. / OVERFLOW / DRAIN)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no1-fo-p",
+      "name": "NO.1 FO TANK (P)",
+      "group": "PORT",
+      "capacity": 3847.27,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 456,
+        "h": 130
+      },
+      "order": 1
+    },
+    {
+      "id": "hfo-drain-tank",
+      "name": "HFO DRAIN TANK",
+      "group": "CL",
+      "capacity": 20.1,
+      "role": "DRAIN",
+      "onShell": false,
+      "position": {
+        "x": 438,
+        "y": 267
+      },
+      "size": {
+        "w": 168,
+        "h": 117
+      },
+      "order": 2
+    },
+    {
+      "id": "no2-hfo-serv",
+      "name": "NO.2 HFO SERV TANK",
+      "group": "CL",
+      "capacity": 61.4,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 3
+    },
+    {
+      "id": "no2-hfo-sett",
+      "name": "NO.2 HFO SETT TANK",
+      "group": "CL",
+      "capacity": 76.2,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 4
+    },
+    {
+      "id": "no1-hfo-serv",
+      "name": "NO.1 HFO SERV. TANK",
+      "group": "CL",
+      "capacity": 61.4,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 726,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 117
+      },
+      "order": 5
+    },
+    {
+      "id": "no1-hfo-sett",
+      "name": "NO.1 HFO SETT. TANK",
+      "group": "CL",
+      "capacity": 61.4,
+      "role": "SETTLING",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 267
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 6
+    },
+    {
+      "id": "hfo-overflow",
+      "name": "HFO OVERFLOW TANK",
+      "group": "CL",
+      "capacity": 49.6,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "position": {
+        "x": 846,
+        "y": 328
+      },
+      "size": {
+        "w": 120,
+        "h": 56
+      },
+      "order": 7,
+      "excludeFromTotal": true
+    },
+    {
+      "id": "no3-fo-s",
+      "name": "NO.3 FO TANK (S)",
+      "group": "STBD",
+      "capacity": 1456.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      },
+      "order": 8
+    },
+    {
+      "id": "no2-fo-s",
+      "name": "NO.2 FO TANK (S)",
+      "group": "STBD",
+      "capacity": 2167.32,
+      "role": "STORAGE",
+      "onShell": true,
+      "position": {
+        "x": 846,
+        "y": 390
+      },
+      "size": {
+        "w": 216,
+        "h": 130
+      },
+      "order": 9
+    },
+    {
+      "id": "do-tank-s",
+      "name": "DIESEL OIL TANK (S)",
+      "group": "STBD",
+      "capacity": 413.76,
+      "role": "STORAGE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 52
+      },
+      "order": 10
+    },
+    {
+      "id": "do-serv-tank-s",
+      "name": "DIESEL OIL SERV. TANK (S)",
+      "group": "STBD",
+      "capacity": 71.4,
+      "role": "SERVICE",
+      "onShell": false,
+      "position": {
+        "x": 606,
+        "y": 442
+      },
+      "size": {
+        "w": 120,
+        "h": 52
+      },
+      "order": 11
+    }
+  ],
+  "sourceHash": "legacy",
+  "sourceFile": null
+}

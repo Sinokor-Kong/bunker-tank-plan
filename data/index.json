@@ -1,0 +1,134 @@
+[
+  {
+    "vesselId": "suriname-prosperity",
+    "vesselName": "M/T SURINAME PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-16-12-00-00",
+        "reportDate": "2026-08-16T12:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "monaco-prosperity",
+    "vesselName": "M/T MONACO PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-16-09-30-00",
+        "reportDate": "2026-08-16T09:30:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "bahamas-prosperity",
+    "vesselName": "M/T BAHAMAS PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-10-00-00",
+        "reportDate": "2026-08-17T10:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "sweden-prosperity",
+    "vesselName": "M/T SWEDEN PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-12-00-00",
+        "reportDate": "2026-08-17T12:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "mozambique-b",
+    "vesselName": "M/T MOZAMBIQUE B",
+    "reports": [
+      {
+        "slug": "2026-08-16-12-00-00",
+        "reportDate": "2026-08-16T12:00:00"
+      },
+      {
+        "slug": "2026-08-17-12-00-00",
+        "reportDate": "2026-08-17T12:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "singapore-prosperity",
+    "vesselName": "M/T SINGAPORE PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-01-42-00",
+        "reportDate": "2026-08-17T01:42:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "egypt-prosperity",
+    "vesselName": "M/T EGYPT PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-12-00-00",
+        "reportDate": "2026-08-17T12:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "bulgaria-prosperity",
+    "vesselName": "M/T BULGARIA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-16-30-00",
+        "reportDate": "2026-08-17T16:30:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "malaysia-prosperity",
+    "vesselName": "M/T MALAYSIA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-11-09-00-00",
+        "reportDate": "2026-08-11T09:00:00"
+      },
+      {
+        "slug": "2026-08-16-05-47-00",
+        "reportDate": "2026-08-16T05:47:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "indonesia-prosperity",
+    "vesselName": "M/T INDONESIA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-14-12-00-00",
+        "reportDate": "2026-08-14T12:00:00"
+      },
+      {
+        "slug": "2026-08-18-12-00-00",
+        "reportDate": "2026-08-18T12:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "panama-prosperity",
+    "vesselName": "M/T PANAMA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-12-00-00",
+        "reportDate": "2026-08-17T12:00:00"
+      }
+    ]
+  },
+  {
+    "vesselId": "tanzania-prosperity",
+    "vesselName": "M/T TANZANIA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-17-12-00-00",
+        "reportDate": "2026-08-17T12:00:00"
+      }
+    ]
+  }
+]
