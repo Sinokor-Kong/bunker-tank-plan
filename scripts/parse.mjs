@@ -160,6 +160,7 @@ const SHARED_PRINCIPLES = `
 1. ROB는 항상 G.O.V.(실측 부피, Gross Observed Volume)를 사용한다. G.S.V.(15도씨 표준 환산 부피)가 별도로 있다면 그것을 쓰지 말고 G.O.V.를 써라.
 2. Tank의 물리적 이름이 어떤 연료(예: "LS FO", "H.F.O.")를 암시하더라도, Report 자체가 명시한 Grade 구분(표 제목, 합계 라벨, Grade 컬럼 등)이 항상 우선한다. 이름과 명시된 Grade가 다르면 명시된 Grade를 따르고 notes에 기록하라.
 3. Report에 부피(Volume/M3/G.O.V.) 컬럼이 없고 중량(Weight/MT)만 있다면, 같은 Report 안에서 Volume과 Weight가 함께 있는 동일 적재율 행들을 찾아 Grade 계열별 밀도(Weight/Volume)를 역산하고, 그 밀도로 중량만 있는 항목을 부피로 환산하라. 계산에 쓴 값이 물리적으로 불가능하면(예: 밀도가 1.0을 넘는 등) 그 행은 버리고 다른 신뢰 가능한 행으로 다시 계산하라. 환산 후 가능하면 Report에 표시된 계열 합계(Total MT)와 일치하는지 스스로 검산하라.
+4. grade 값은 반드시 다음 표준 코드 중 하나로만 적어라: VLSFO, HFO, HSFO, LSFO, LSHFO, MGO, LSMGO. Report의 원문 표기가 이와 다르게 쓰여 있어도(예: "HIGH SULPHUR HFO", "MARINE GAS OIL", "M.D.O.") 의미가 가장 가까운 표준 코드로 변환해서 적어라 (고유황유 계열은 HFO/HSFO 중 하나, 저유황 경유 계열은 보통 LSMGO, 일반 경유는 MGO). 표준 코드 중 어느 것과도 의미가 명확히 다른 특수한 Grade만 예외적으로 원문 그대로 적고 notes에 이유를 남겨라.
 `.trim();
 
 function findExisting(dataDir, vesselId) {
@@ -209,7 +210,10 @@ async function processManifestDir(dir) {
     const groupsPresent = [...new Set(tanks.map(t => t.group))];
     vesselConfig = {
       vesselId,
-      vesselName: aiResult.vesselName || vesselName,
+      // 업로드 화면에서 사용자가 직접 입력한 선박명을 우선한다 -- 도면에는 매각/개명 전의
+      // 예전 선명(예: 자매선 도면 재사용 시)이나 조선소 Hull 표기가 적혀 있을 수 있기 때문에,
+      // AI가 도면에서 읽은 이름은 사용자가 이름을 안 준 경우의 최후 대안으로만 쓴다.
+      vesselName: vesselName || aiResult.vesselName,
       sourceHash: sha256,
       sourceFile: manifest.capacityPlanFilename,
       display: { decimals: 1, unit: "MT", missingLabel: "N/A", minVisibleCapacity: 100 },
