@@ -1,0 +1,70 @@
+{
+  "vesselId": "m-t-peru-prosperity",
+  "reportDate": "2026-04-25T12:00:00",
+  "meta": {
+    "position": "honk kong",
+    "trim": 3
+  },
+  "rob": [
+    {
+      "tankId": "no-1-hfo-tk-p",
+      "grade": "HSFO",
+      "rob": 1509
+    },
+    {
+      "tankId": "no-1-hfo-tk-s",
+      "grade": "HSFO",
+      "rob": 2.8
+    },
+    {
+      "tankId": "no-2-hfo-tk-p",
+      "grade": "VLSFO",
+      "rob": 12
+    },
+    {
+      "tankId": "no-2-hfo-tk-s",
+      "grade": "HSFO",
+      "rob": 101
+    },
+    {
+      "tankId": "hfo-sett-tk-p",
+      "grade": "HSFO",
+      "rob": 183.6
+    },
+    {
+      "tankId": "hfo-serv-tk-p",
+      "grade": "HSFO",
+      "rob": 169.2
+    },
+    {
+      "tankId": "hfo-sett-tk-s",
+      "grade": "VLSFO",
+      "rob": 0.6
+    },
+    {
+      "tankId": "hfo-serv-tk-s",
+      "grade": "VLSFO",
+      "rob": 59.6
+    },
+    {
+      "tankId": "hfo-overflow-tk-p",
+      "grade": "HSFO",
+      "rob": 8
+    },
+    {
+      "tankId": "m-d-o-storage-tk-s",
+      "grade": "MGO",
+      "rob": 3.5
+    },
+    {
+      "tankId": "m-d-o-sett-tk-p",
+      "grade": "MGO",
+      "rob": 48.3
+    },
+    {
+      "tankId": "m-d-o-serv-tk-p",
+      "grade": "MGO",
+      "rob": 54.6
+    }
+  ]
+}
