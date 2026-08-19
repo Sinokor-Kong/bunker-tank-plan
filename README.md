@@ -7,8 +7,11 @@ GitHub Actions + Claude API가 자동으로 분석해 반영한다.
 ## 최초 설정 (1회)
 
 1. **GitHub Pages 활성화**: 저장소 Settings → Pages → Source를 `main` 브랜치 / `/ (root)`로 설정.
-2. **Anthropic API 키 등록**: Settings → Secrets and variables → Actions → New repository secret
-   → 이름 `ANTHROPIC_API_KEY`, 값은 https://console.anthropic.com 에서 발급받은 키.
+   (Private 저장소는 GitHub 무료 플랜에서 Pages를 지원하지 않으므로, Private을 유지하려면
+   GitHub Pro 이상 업그레이드가 필요하다. 이 저장소는 무료로 쓰기 위해 Public으로 운영 중이다.)
+2. **Gemini API 키 등록**: https://aistudio.google.com 에서 무료로 API 키 발급(신용카드 불필요,
+   분당/일일 요청 수 제한이 있는 무료 티어) → 저장소 Settings → Secrets and variables → Actions
+   → New repository secret → 이름 `GOOGLE_GEMINI_API_KEY`, 값은 발급받은 키.
    (이 키는 GitHub Actions 안에서만 쓰이고 브라우저에는 절대 노출되지 않는다.)
 3. **업로드용 Personal Access Token 발급**: 브라우저에서 파일을 커밋하려면 이 저장소 전용
    fine-grained PAT이 필요하다. GitHub → Settings → Developer settings → Fine-grained tokens
@@ -31,6 +34,10 @@ GitHub Actions + Claude API가 자동으로 분석해 반영한다.
 
 ## 알려진 한계
 
+- AI 분석은 Google Gemini(무료 API)를 사용한다. Anthropic Claude API보다 도면/표 판독 품질이
+  떨어질 수 있어, 특히 스캔 도면처럼 텍스트 레이어가 없는 PDF에서는 PR의 결과를 더 꼼꼼히
+  검토해야 한다. 유료 결제가 가능해지면 `scripts/parse.mjs`의 `callGemini`를 Claude API 호출로
+  다시 바꾸면 된다 (Anthropic Messages API의 document 블록 + tool 강제 출력 방식, 과거 커밋 참고).
 - 자동 좌표 계산(`scripts/parse.mjs`의 `computeLayout`)은 Port/Starboard에 한 줄로 배치되는
   일반적인 선박 구조를 가정한다. Bulgaria Prosperity처럼 같은 Frame 구간에 Tank가 위아래로
   2단씩 쌓인 특이 구조는 자동 생성 후 PR에서 `data/vessels/<id>.json`의 `position`/`size`를

@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 // GitHub Actions에서 실행되는 파서: uploads/ 아래 새로 커밋된 Capacity Plan / ROB Report를 읽어
-// Claude API로 구조화 데이터를 추출하고, data/ 아래 JSON으로 기록한다.
+// Google Gemini API(무료 티어)로 구조화 데이터를 추출하고, data/ 아래 JSON으로 기록한다.
+// (vessel-dashboard/app/api/analyze-contract/route.ts 의 PDF->JSON 분석 패턴과 동일한 계열의
+// 방식이며, 그 파일은 SDK를 쓰지만 여기서는 GitHub Actions에 SDK 의존성을 늘리지 않기 위해
+// REST API를 직접 fetch로 호출한다.)
 //
 // 설계 원칙 (Bunker.md 참고):
 // - ROB는 항상 G.O.V.(실측 부피) 기준. 중량(MT)만 있는 Report는 밀도를 역산해 부피로 환산.
@@ -20,8 +23,8 @@ const ROOT = path.resolve(__dirname, "..");
 const UPLOADS_DIR = path.join(ROOT, "uploads");
 const DATA_DIR = path.join(ROOT, "data");
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const MODEL = process.env.BUNKER_MODEL || "claude-sonnet-5";
+const GOOGLE_GEMINI_API_KEY = process.env.GOOGLE_GEMINI_API_KEY;
+const MODEL = process.env.BUNKER_MODEL || "gemini-2.0-flash";
 
 // bunker-plan-console.html 아티팩트의 HULL_TEMPLATE / makeFrameToX 를 그대로 이식한 값.
 // 모든 선박이 이 값을 공유해야 선미 실루엣(쐐기 모양/Port-Starboard 간격)이 항상 동일하게 나온다.
@@ -68,87 +71,74 @@ function slugifyId(name, i) {
 
 const GROUP_LABELS = { PORT: "PORT SIDE", CL: "CENTERLINE (SETT. / SERV.)", STBD: "STARBOARD SIDE" };
 
-async function callClaude({ system, content, tool }) {
-  if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY 시크릿이 설정되지 않았습니다.");
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+// Gemini의 responseSchema는 JSON Schema가 아니라 OpenAPI 3.0 Schema 서브셋이다
+// (type은 대문자: STRING/NUMBER/BOOLEAN/ARRAY/OBJECT).
+async function callGemini({ system, parts, schema }) {
+  if (!GOOGLE_GEMINI_API_KEY) throw new Error("GOOGLE_GEMINI_API_KEY 시크릿이 설정되지 않았습니다.");
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GOOGLE_GEMINI_API_KEY}`, {
     method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01"
-    },
+    headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      model: MODEL,
-      max_tokens: 8000,
-      system,
-      messages: [{ role: "user", content }],
-      tools: [tool],
-      tool_choice: { type: "tool", name: tool.name }
+      systemInstruction: { parts: [{ text: system }] },
+      contents: [{ role: "user", parts }],
+      generationConfig: { responseMimeType: "application/json", responseSchema: schema }
     })
   });
-  if (!res.ok) throw new Error(`Claude API 오류 (${res.status}): ${(await res.text()).slice(0, 500)}`);
+  if (!res.ok) throw new Error(`Gemini API 오류 (${res.status}): ${(await res.text()).slice(0, 500)}`);
   const json = await res.json();
-  const toolUse = json.content.find(b => b.type === "tool_use" && b.name === tool.name);
-  if (!toolUse) throw new Error("Claude가 구조화된 결과를 반환하지 않았습니다.");
-  return toolUse.input;
+  const text = json.candidates?.[0]?.content?.parts?.map(p => p.text).join("");
+  if (!text) throw new Error(`Gemini가 결과를 반환하지 않았습니다: ${JSON.stringify(json).slice(0, 500)}`);
+  return JSON.parse(text);
 }
 
-const VESSEL_TANKS_TOOL = {
-  name: "emit_vessel_tanks",
-  description: "Capacity Plan 도면에서 읽어낸 선박 이름과 Tank 목록을 반환한다.",
-  input_schema: {
-    type: "object",
-    required: ["vesselName", "tanks"],
-    properties: {
-      vesselName: { type: "string", description: "예: M/T EXAMPLE PROSPERITY" },
-      pxPerFrameHint: { type: "number", description: "Frame 범위가 유난히 넓은 선박(약 40개 Frame 이상)이면 16, 보통은 24로 둔다." },
-      tanks: {
-        type: "array",
-        items: {
-          type: "object",
-          required: ["name", "frameFrom", "frameTo", "capacity", "side", "role", "onShell"],
-          properties: {
-            name: { type: "string", description: "도면에 적힌 Tank 이름 그대로 (예: NO.2 H.F.O. TK (P))" },
-            frameFrom: { type: "number" },
-            frameTo: { type: "number" },
-            capacity: { type: "number", description: "Capacity Plan에 명시된 100% 용량 (M3, G.O.V. 기준)" },
-            side: { type: "string", enum: ["PORT", "STBD", "CL"], description: "PORT/STBD는 선체 외판에 붙어 좌우로 표시되는 Tank, CL은 그 외 모든 Sett./Serv./Overflow/이중저 등 숨겨지는 Tank" },
-            role: { type: "string", enum: ["STORAGE", "SERVICE", "SETTLING", "OVERFLOW", "DRAIN"] },
-            onShell: { type: "boolean", description: "선체 외판에 직접 붙어 있는 Wing/Side Tank이면 true, 이중저(Double Bottom) 등 내부 Tank면 false" },
-            excludeFromTotal: { type: "boolean", description: "Overflow Tank처럼 총량 합계에서 항상 제외해야 하면 true" }
-          }
+const VESSEL_TANKS_SCHEMA = {
+  type: "OBJECT",
+  required: ["vesselName", "tanks"],
+  properties: {
+    vesselName: { type: "STRING", description: "예: M/T EXAMPLE PROSPERITY" },
+    pxPerFrameHint: { type: "NUMBER", description: "Frame 범위가 유난히 넓은 선박(약 40개 Frame 이상)이면 16, 보통은 24로 둔다." },
+    tanks: {
+      type: "ARRAY",
+      items: {
+        type: "OBJECT",
+        required: ["name", "frameFrom", "frameTo", "capacity", "side", "role", "onShell"],
+        properties: {
+          name: { type: "STRING", description: "도면에 적힌 Tank 이름 그대로 (예: NO.2 H.F.O. TK (P))" },
+          frameFrom: { type: "NUMBER" },
+          frameTo: { type: "NUMBER" },
+          capacity: { type: "NUMBER", description: "Capacity Plan에 명시된 100% 용량 (M3, G.O.V. 기준)" },
+          side: { type: "STRING", enum: ["PORT", "STBD", "CL"], description: "PORT/STBD는 선체 외판에 붙어 좌우로 표시되는 Tank, CL은 그 외 모든 Sett./Serv./Overflow/이중저 등 숨겨지는 Tank" },
+          role: { type: "STRING", enum: ["STORAGE", "SERVICE", "SETTLING", "OVERFLOW", "DRAIN"] },
+          onShell: { type: "BOOLEAN", description: "선체 외판에 직접 붙어 있는 Wing/Side Tank이면 true, 이중저(Double Bottom) 등 내부 Tank면 false" },
+          excludeFromTotal: { type: "BOOLEAN", description: "Overflow Tank처럼 총량 합계에서 항상 제외해야 하면 true" }
         }
       }
     }
   }
 };
 
-const ROB_REPORT_TOOL = {
-  name: "emit_rob_report",
-  description: "Bunker ROB Report에서 읽어낸 값을 지정된 Tank 목록에 매핑해 반환한다.",
-  input_schema: {
-    type: "object",
-    required: ["reportDate", "rob"],
-    properties: {
-      reportDate: { type: "string", description: "ISO 8601 형식. Report에 시각이 없으면 00:00:00으로." },
-      meta: {
-        type: "object",
-        properties: { position: { type: "string" }, condition: { type: "string" }, trim: { type: "number" } }
-      },
-      rob: {
-        type: "array",
-        items: {
-          type: "object",
-          required: ["tankName", "grade", "robM3"],
-          properties: {
-            tankName: { type: "string", description: "아래 제공된 Tank 목록의 name과 최대한 일치시킬 것" },
-            grade: { type: "string" },
-            robM3: { type: "number", description: "G.O.V.(실측 부피, M3) 기준. Report에 중량(MT)만 있으면 같은 Report 내 다른 신뢰 가능한 행의 Volume/Weight 비율로 밀도를 역산해 환산할 것." }
-          }
+const ROB_REPORT_SCHEMA = {
+  type: "OBJECT",
+  required: ["reportDate", "rob"],
+  properties: {
+    reportDate: { type: "STRING", description: "ISO 8601 형식. Report에 시각이 없으면 00:00:00으로." },
+    meta: {
+      type: "OBJECT",
+      properties: { position: { type: "STRING" }, condition: { type: "STRING" }, trim: { type: "NUMBER" } }
+    },
+    rob: {
+      type: "ARRAY",
+      items: {
+        type: "OBJECT",
+        required: ["tankName", "grade", "robM3"],
+        properties: {
+          tankName: { type: "STRING", description: "아래 제공된 Tank 목록의 name과 최대한 일치시킬 것" },
+          grade: { type: "STRING" },
+          robM3: { type: "NUMBER", description: "G.O.V.(실측 부피, M3) 기준. Report에 중량(MT)만 있으면 같은 Report 내 다른 신뢰 가능한 행의 Volume/Weight 비율로 밀도를 역산해 환산할 것." }
         }
-      },
-      notes: { type: "string", description: "밀도 역산을 했다면 그 계산 근거, 이름-Grade 불일치를 Report 기준으로 바로잡았다면 그 내용을 여기에 기록." }
-    }
+      }
+    },
+    notes: { type: "STRING", description: "밀도 역산을 했다면 그 계산 근거, 이름-Grade 불일치를 Report 기준으로 바로잡았다면 그 내용을 여기에 기록." }
   }
 };
 
@@ -194,13 +184,13 @@ async function processManifestDir(dir) {
     const bytes = fs.readFileSync(filePath);
     const sha256 = crypto.createHash("sha256").update(bytes).digest("hex");
     console.log(`[parse] ${vesselId}: Capacity Plan 분석 중 (${manifest.capacityPlanFilename})`);
-    const aiResult = await callClaude({
+    const aiResult = await callGemini({
       system: `너는 선박 Capacity Plan 도면을 읽어 Tank 목록을 구조화하는 전문가다. ${SHARED_PRINCIPLES}\nTank의 Frame 범위(FR.NO)와 100% Capacity를 표에서 정확히 읽어라. 선체 외판에 붙어 좌우로 넓게 배치된 대형 저장 Tank(Storage)는 side를 PORT 또는 STBD로, 그 외 Settling/Service/Overflow Tank나 이중저(Double Bottom) Tank는 side를 CL로 지정하라.`,
-      content: [
-        { type: "document", source: { type: "base64", media_type: "application/pdf", data: bytes.toString("base64") } },
-        { type: "text", text: "이 Capacity Plan 도면에서 선박명과 전체 Tank 목록(Fuel Oil / Diesel Oil 계열)을 추출해줘." }
+      parts: [
+        { inlineData: { mimeType: "application/pdf", data: bytes.toString("base64") } },
+        { text: "이 Capacity Plan 도면에서 선박명과 전체 Tank 목록(Fuel Oil / Diesel Oil 계열)을 추출해줘." }
       ],
-      tool: VESSEL_TANKS_TOOL
+      schema: VESSEL_TANKS_SCHEMA
     });
     const tanks = computeLayout(aiResult.tanks, aiResult.pxPerFrameHint);
     const groupsPresent = [...new Set(tanks.map(t => t.group))];
@@ -232,22 +222,22 @@ async function processManifestDir(dir) {
       const wb = XLSX.readFile(filePath);
       const sheets = {};
       for (const name of wb.SheetNames) sheets[name] = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, raw: true, defval: "" });
-      aiResult = await callClaude({
+      aiResult = await callGemini({
         system: `너는 선박 Bunker ROB Report 표를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}`,
-        content: [
-          { type: "text", text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName은 이 중 하나와 최대한 일치시켜라):\n${JSON.stringify(knownTanks)}\n\n아래는 Excel Report의 원본 표(시트별 2차원 배열, header:1)이다:\n${JSON.stringify(sheets)}` }
+        parts: [
+          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName은 이 중 하나와 최대한 일치시켜라):\n${JSON.stringify(knownTanks)}\n\n아래는 Excel Report의 원본 표(시트별 2차원 배열, header:1)이다:\n${JSON.stringify(sheets)}` }
         ],
-        tool: ROB_REPORT_TOOL
+        schema: ROB_REPORT_SCHEMA
       });
     } else {
       const bytes = fs.readFileSync(filePath);
-      aiResult = await callClaude({
+      aiResult = await callGemini({
         system: `너는 선박 Bunker ROB Report를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}`,
-        content: [
-          { type: "document", source: { type: "base64", media_type: "application/pdf", data: bytes.toString("base64") } },
-          { type: "text", text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName은 이 중 하나와 최대한 일치시켜라):\n${JSON.stringify(knownTanks)}\n\n이 Bunker ROB Report에서 Tank별 ROB를 추출해줘.` }
+        parts: [
+          { inlineData: { mimeType: "application/pdf", data: bytes.toString("base64") } },
+          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName은 이 중 하나와 최대한 일치시켜라):\n${JSON.stringify(knownTanks)}\n\n이 Bunker ROB Report에서 Tank별 ROB를 추출해줘.` }
         ],
-        tool: ROB_REPORT_TOOL
+        schema: ROB_REPORT_SCHEMA
       });
     }
 
