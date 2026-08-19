@@ -1,0 +1,71 @@
+{
+  "vesselId": "m-t-peru-prosperity",
+  "reportDate": "2026-04-25T12:00:00Z",
+  "meta": {
+    "condition": "PRESENT VOYAGE",
+    "position": "honk kong",
+    "trim": 3
+  },
+  "rob": [
+    {
+      "tankId": "no-1-h-f-o-tk-p",
+      "grade": "HSHFO",
+      "rob": 1509
+    },
+    {
+      "tankId": "no-1-h-f-o-tk-s",
+      "grade": "HSHFO",
+      "rob": 2.8
+    },
+    {
+      "tankId": "no-2-h-f-o-tk-p",
+      "grade": "VLSFO",
+      "rob": 12
+    },
+    {
+      "tankId": "no-2-h-f-o-tk-s",
+      "grade": "HSHFO",
+      "rob": 101
+    },
+    {
+      "tankId": "h-f-o-sett-tk-p",
+      "grade": "HSHFO",
+      "rob": 183.6
+    },
+    {
+      "tankId": "h-f-o-serv-tk-p",
+      "grade": "HSHFO",
+      "rob": 169.2
+    },
+    {
+      "tankId": "h-f-o-sett-tk-s",
+      "grade": "VLSFO",
+      "rob": 0.6
+    },
+    {
+      "tankId": "h-f-o-serv-tk-s",
+      "grade": "VLSFO",
+      "rob": 59.6
+    },
+    {
+      "tankId": "h-f-o-overflow-tk-p",
+      "grade": "HSHFO",
+      "rob": 8
+    },
+    {
+      "tankId": "m-d-o-storage-tk-s",
+      "grade": "MARINE GAS OIL",
+      "rob": 3.5
+    },
+    {
+      "tankId": "m-d-o-sett-tk-s",
+      "grade": "MARINE GAS OIL",
+      "rob": 48.3
+    },
+    {
+      "tankId": "m-d-o-serv-tk-s",
+      "grade": "MARINE GAS OIL",
+      "rob": 54.6
+    }
+  ]
+}

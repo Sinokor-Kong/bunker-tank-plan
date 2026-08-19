@@ -1,0 +1,241 @@
+{
+  "vesselId": "m-t-peru-prosperity",
+  "vesselName": "TAI SAN",
+  "sourceHash": "3e7ae81f6b2a5bedbf9a6bf5228a4c5b98f9a85eb0651226c1952617c97cba20",
+  "sourceFile": "3B101001BB-CAPACITY PLAN WITH DEADWEIGHT SCALE.pdf",
+  "display": {
+    "decimals": 1,
+    "unit": "MT",
+    "missingLabel": "N/A",
+    "minVisibleCapacity": 100
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV.)"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no-1-h-f-o-tk-p",
+      "name": "NO.1 H.F.O. TK (P)",
+      "group": "PORT",
+      "capacity": 2247.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 1,
+      "position": {
+        "x": 966,
+        "y": 130
+      },
+      "size": {
+        "w": 264,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-1-h-f-o-tk-s",
+      "name": "NO.1 H.F.O. TK (S)",
+      "group": "STBD",
+      "capacity": 2247.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 2,
+      "position": {
+        "x": 966,
+        "y": 390
+      },
+      "size": {
+        "w": 264,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-h-f-o-tk-p",
+      "name": "NO.2 H.F.O. TK (P)",
+      "group": "PORT",
+      "capacity": 2911.3,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 3,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 360,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-h-f-o-tk-s",
+      "name": "NO.2 H.F.O. TK (S)",
+      "group": "STBD",
+      "capacity": 2911.3,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 4,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 360,
+        "h": 130
+      }
+    },
+    {
+      "id": "h-f-o-sett-tk-p",
+      "name": "H.F.O. SETT. TK (P)",
+      "group": "CL",
+      "capacity": 196.4,
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 5,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "h-f-o-sett-tk-s",
+      "name": "H.F.O. SETT. TK (S)",
+      "group": "CL",
+      "capacity": 196.4,
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 6,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "h-f-o-serv-tk-p",
+      "name": "H.F.O. SERV. TK (P)",
+      "group": "CL",
+      "capacity": 177,
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 7,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "h-f-o-serv-tk-s",
+      "name": "H.F.O. SERV. TK (S)",
+      "group": "CL",
+      "capacity": 177,
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 8,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "h-f-o-overflow-tk-p",
+      "name": "H.F.O. OVERFLOW TK (P)",
+      "group": "CL",
+      "capacity": 148.2,
+      "role": "OVERFLOW",
+      "onShell": false,
+      "order": 9,
+      "excludeFromTotal": true,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "m-d-o-storage-tk-s",
+      "name": "M.D.O. STORAGE TK (S)",
+      "group": "CL",
+      "capacity": 283.1,
+      "role": "STORAGE",
+      "onShell": false,
+      "order": 10,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "m-d-o-sett-tk-s",
+      "name": "M.D.O. SETT. TK (S)",
+      "group": "CL",
+      "capacity": 107,
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 11,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "m-d-o-serv-tk-s",
+      "name": "M.D.O. SERV. TK (S)",
+      "group": "CL",
+      "capacity": 107,
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 12,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    }
+  ]
+}
