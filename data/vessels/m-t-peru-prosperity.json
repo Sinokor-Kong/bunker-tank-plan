@@ -23,218 +23,217 @@
       "label": "PORT SIDE"
     },
     {
-      "id": "STBD",
-      "label": "STARBOARD SIDE"
-    },
-    {
       "id": "CL",
       "label": "CENTERLINE (SETT. / SERV.)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
     }
   ],
   "tanks": [
     {
-      "id": "no-1-hfo-tk-p",
-      "name": "NO.1 HFO TK (P)",
+      "id": "no-1-h-f-o-t-p",
+      "name": "NO.1 H.F.O.T (P)",
       "group": "PORT",
-      "capacity": 2347.7,
       "role": "STORAGE",
       "onShell": true,
       "order": 1,
+      "capacity": 2347.7,
       "position": {
-        "x": 822,
+        "x": 1374,
         "y": 130
       },
       "size": {
-        "w": 264,
+        "w": 168,
         "h": 130
       }
     },
     {
-      "id": "no-1-hfo-tk-s",
-      "name": "NO.1 HFO TK (S)",
+      "id": "no-1-h-f-o-t-s",
+      "name": "NO.1 H.F.O.T (S)",
       "group": "STBD",
-      "capacity": 2347.7,
       "role": "STORAGE",
       "onShell": true,
       "order": 2,
+      "capacity": 2347.7,
       "position": {
-        "x": 822,
+        "x": 1374,
         "y": 390
       },
       "size": {
-        "w": 264,
+        "w": 168,
         "h": 130
       }
     },
     {
-      "id": "no-2-hfo-tk-p",
-      "name": "NO.2 HFO TK (P)",
+      "id": "no-2-l-sur-hfot-p",
+      "name": "NO.2 L.SUR.HFOT (P)",
       "group": "PORT",
-      "capacity": 1560.8,
       "role": "STORAGE",
       "onShell": true,
       "order": 3,
+      "capacity": 1684,
       "position": {
-        "x": 606,
+        "x": 726,
         "y": 130
       },
       "size": {
-        "w": 216,
+        "w": 648,
         "h": 130
       }
     },
     {
-      "id": "no-2-hfo-tk-s",
-      "name": "NO.2 HFO TK (S)",
+      "id": "no-2-h-f-o-t-s",
+      "name": "NO.2 H.F.O.T (S)",
       "group": "STBD",
-      "capacity": 1560.8,
       "role": "STORAGE",
       "onShell": true,
       "order": 4,
+      "capacity": 2321.6,
       "position": {
         "x": 606,
         "y": 390
       },
       "size": {
-        "w": 216,
+        "w": 768,
         "h": 130
       }
     },
     {
-      "id": "no-1-hfo-sett-tk-p",
-      "name": "NO.1 HFO SETT TK (P)",
+      "id": "h-f-o-sett-t-p",
+      "name": "H.F.O.SETT.T (P)",
       "group": "CL",
-      "capacity": 177,
       "role": "SETTLING",
       "onShell": false,
       "order": 5,
+      "capacity": 241.6,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 1278,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 96,
+        "h": 117
       }
     },
     {
-      "id": "no-2-hfo-sett-tk-s",
-      "name": "NO.2 HFO SETT TK (S)",
+      "id": "h-f-o-serv-t-p",
+      "name": "H.F.O.SERV.T (P)",
       "group": "CL",
-      "capacity": 177,
-      "role": "SETTLING",
+      "role": "SERVICE",
       "onShell": false,
       "order": 6,
+      "capacity": 181.2,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 1206,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 72,
+        "h": 117
       }
     },
     {
-      "id": "hfo-serv-tk-p",
-      "name": "HFO SERV TK (P)",
+      "id": "hfo-l-sur-serv-t-p",
+      "name": "HFO.L.SUR.SERV.T (P)",
       "group": "CL",
-      "capacity": 146.4,
       "role": "SERVICE",
       "onShell": false,
       "order": 7,
+      "capacity": 151,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 1134,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 72,
+        "h": 117
       }
     },
     {
-      "id": "hfo-serv-tk-s",
-      "name": "HFO SERV TK (S)",
+      "id": "hfo-l-sur-sett-t-p",
+      "name": "HFO.L.SUR.SETT.T (P)",
       "group": "CL",
-      "capacity": 146.4,
-      "role": "SERVICE",
+      "role": "SETTLING",
       "onShell": false,
       "order": 8,
+      "capacity": 151,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 1086,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 48,
+        "h": 117
       }
     },
     {
-      "id": "hfo-overflow-tk-p",
-      "name": "HFO OVERFLOW TK (P)",
+      "id": "f-o-overf-t-p",
+      "name": "F.O.OVERF.T (P)",
       "group": "CL",
-      "capacity": 277.6,
       "role": "OVERFLOW",
       "onShell": false,
       "order": 9,
       "excludeFromTotal": true,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 1374,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 48,
+        "h": 117
       }
     },
     {
-      "id": "m-g-o-storage-tk-s",
-      "name": "M.G.O. STORAGE TK (S)",
+      "id": "m-d-o-stor-t-s",
+      "name": "M.D.O.STOR.T (S)",
       "group": "STBD",
-      "capacity": 332.7,
       "role": "STORAGE",
-      "onShell": true,
+      "onShell": false,
       "order": 10,
+      "capacity": 294.4,
       "position": {
-        "x": 846,
-        "y": 390
+        "x": 1086,
+        "y": 267
       },
       "size": {
-        "w": 240,
-        "h": 130
+        "w": 288,
+        "h": 117
       }
     },
     {
-      "id": "m-g-o-serv-tk-p",
-      "name": "M.G.O. SERV TK (P)",
+      "id": "m-d-o-sett-t-p",
+      "name": "M.D.O.SETT.T (P)",
       "group": "CL",
-      "capacity": 107,
-      "role": "SERVICE",
+      "role": "SETTLING",
       "onShell": false,
       "order": 11,
+      "capacity": 107.2,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 678,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 48,
+        "h": 117
       }
     },
     {
-      "id": "m-g-o-serv-tk-s",
-      "name": "M.G.O. SERV TK (S)",
+      "id": "m-d-o-serv-t-p",
+      "name": "M.D.O.SERV.T (P)",
       "group": "CL",
-      "capacity": 107,
       "role": "SERVICE",
       "onShell": false,
       "order": 12,
+      "capacity": 148.3,
       "position": {
-        "x": 0,
-        "y": 0
+        "x": 606,
+        "y": 267
       },
       "size": {
-        "w": 0,
-        "h": 0
+        "w": 72,
+        "h": 117
       }
     }
   ]

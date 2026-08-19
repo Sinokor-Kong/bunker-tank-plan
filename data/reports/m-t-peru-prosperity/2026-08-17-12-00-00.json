@@ -1,0 +1,71 @@
+{
+  "vesselId": "m-t-peru-prosperity",
+  "reportDate": "2026-08-17T12:00:00",
+  "meta": {
+    "position": "At sea",
+    "condition": "PRESENT VOYAGE",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no-1-h-f-o-t-p",
+      "grade": "HSFO",
+      "rob": 0
+    },
+    {
+      "tankId": "no-1-h-f-o-t-s",
+      "grade": "HSFO",
+      "rob": 1719.5
+    },
+    {
+      "tankId": "no-2-l-sur-hfot-p",
+      "grade": "VLSFO",
+      "rob": 1080
+    },
+    {
+      "tankId": "no-2-h-f-o-t-s",
+      "grade": "HSFO",
+      "rob": 355
+    },
+    {
+      "tankId": "h-f-o-sett-t-p",
+      "grade": "HSFO",
+      "rob": 90.2
+    },
+    {
+      "tankId": "h-f-o-serv-t-p",
+      "grade": "HSFO",
+      "rob": 121.5
+    },
+    {
+      "tankId": "hfo-l-sur-serv-t-p",
+      "grade": "VLSFO",
+      "rob": 78.7
+    },
+    {
+      "tankId": "hfo-l-sur-sett-t-p",
+      "grade": "VLSFO",
+      "rob": 63.6
+    },
+    {
+      "tankId": "f-o-overf-t-p",
+      "grade": "HSFO",
+      "rob": 8
+    },
+    {
+      "tankId": "m-d-o-stor-t-s",
+      "grade": "MGO",
+      "rob": 132.7
+    },
+    {
+      "tankId": "m-d-o-sett-t-p",
+      "grade": "MGO",
+      "rob": 23.41
+    },
+    {
+      "tankId": "m-d-o-serv-t-p",
+      "grade": "MGO",
+      "rob": 9
+    }
+  ]
+}
