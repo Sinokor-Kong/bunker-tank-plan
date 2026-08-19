@@ -71,9 +71,13 @@ function slugifyId(name, i) {
 
 const GROUP_LABELS = { PORT: "PORT SIDE", CL: "CENTERLINE (SETT. / SERV.)", STBD: "STARBOARD SIDE" };
 
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
 // Gemini의 responseSchema는 JSON Schema가 아니라 OpenAPI 3.0 Schema 서브셋이다
 // (type은 대문자: STRING/NUMBER/BOOLEAN/ARRAY/OBJECT).
-async function callGemini({ system, parts, schema }) {
+// 무료 티어는 일시적인 과부하(503)/속도 제한(429)이 잦으므로, 이 두 경우만 지수 백오프로 재시도한다
+// (그 외 오류는 재시도해도 반복 실패할 뿐이라 바로 던진다 -- 예: 400 잘못된 요청, 404 모델명 오류).
+async function callGemini({ system, parts, schema }, attempt = 1) {
   if (!GOOGLE_GEMINI_API_KEY) throw new Error("GOOGLE_GEMINI_API_KEY 시크릿이 설정되지 않았습니다.");
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GOOGLE_GEMINI_API_KEY}`, {
     method: "POST",
@@ -84,7 +88,16 @@ async function callGemini({ system, parts, schema }) {
       generationConfig: { responseMimeType: "application/json", responseSchema: schema }
     })
   });
-  if (!res.ok) throw new Error(`Gemini API 오류 (${res.status}): ${(await res.text()).slice(0, 500)}`);
+  if (!res.ok) {
+    const bodyText = (await res.text()).slice(0, 500);
+    if ((res.status === 503 || res.status === 429) && attempt < 4) {
+      const waitMs = attempt * 15000;
+      console.warn(`[parse] Gemini API ${res.status} (일시적 과부하/속도 제한) -- ${waitMs / 1000}초 후 재시도 (${attempt}/3)`);
+      await sleep(waitMs);
+      return callGemini({ system, parts, schema }, attempt + 1);
+    }
+    throw new Error(`Gemini API 오류 (${res.status}): ${bodyText}`);
+  }
   const json = await res.json();
   const text = json.candidates?.[0]?.content?.parts?.map(p => p.text).join("");
   if (!text) throw new Error(`Gemini가 결과를 반환하지 않았습니다: ${JSON.stringify(json).slice(0, 500)}`);
