@@ -130,5 +130,19 @@
         "reportDate": "2026-08-17T12:00:00"
       }
     ]
+  },
+  {
+    "vesselId": "m-t-peru-prosperity",
+    "vesselName": "M/T PERU PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-04-25-12-00-00",
+        "reportDate": "2026-04-25T12:00:00"
+      },
+      {
+        "slug": "2026-04-25-00-00-00",
+        "reportDate": "2026-04-25T00:00:00"
+      }
+    ]
   }
 ]
