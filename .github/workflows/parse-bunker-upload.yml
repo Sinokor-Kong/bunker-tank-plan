@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "uploads/**"
+  workflow_dispatch: {}
 
 permissions:
   contents: write

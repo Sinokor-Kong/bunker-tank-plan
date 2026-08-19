@@ -24,7 +24,7 @@ const UPLOADS_DIR = path.join(ROOT, "uploads");
 const DATA_DIR = path.join(ROOT, "data");
 
 const GOOGLE_GEMINI_API_KEY = process.env.GOOGLE_GEMINI_API_KEY;
-const MODEL = process.env.BUNKER_MODEL || "gemini-2.0-flash";
+const MODEL = process.env.BUNKER_MODEL || "gemini-3.6-flash";
 
 // bunker-plan-console.html 아티팩트의 HULL_TEMPLATE / makeFrameToX 를 그대로 이식한 값.
 // 모든 선박이 이 값을 공유해야 선미 실루엣(쐐기 모양/Port-Starboard 간격)이 항상 동일하게 나온다.
