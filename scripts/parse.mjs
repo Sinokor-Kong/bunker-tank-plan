@@ -106,7 +106,7 @@ async function callGemini({ system, parts, schema }, attempt = 1) {
 
 const VESSEL_TANKS_SCHEMA = {
   type: "OBJECT",
-  required: ["vesselName", "tanks"],
+  required: ["vesselName", "tanks", "reportedTankCount", "reportedTotalCapacity"],
   properties: {
     vesselName: { type: "STRING", description: "예: M/T EXAMPLE PROSPERITY" },
     pxPerFrameHint: { type: "NUMBER", description: "Frame 범위가 유난히 넓은 선박(약 40개 Frame 이상)이면 16, 보통은 24로 둔다." },
@@ -126,13 +126,18 @@ const VESSEL_TANKS_SCHEMA = {
           excludeFromTotal: { type: "BOOLEAN", description: "Overflow Tank처럼 총량 합계에서 항상 제외해야 하면 true" }
         }
       }
-    }
+    },
+    // 아래 두 필드는 AI 스스로 표를 다시 세어보게 해서, 코드가 tanks 배열과 대조 검산할 수 있게 하는
+    // 자기 검증용 필드다 (Peru Prosperity 사건: 존재하지 않는 Starboard SETT/SERV Tank를 만들어
+    // 내거나, 저유황 계열 Tank 2개를 통째로 빠뜨리고도 그럴듯한 결과를 반환한 적이 있음).
+    reportedTankCount: { type: "NUMBER", description: "표에 실제로 인쇄된 연료(HFO/Diesel/MGO 등) Tank 데이터 행의 개수 (TOTAL 행 제외). tanks 배열의 길이와 반드시 같아야 한다." },
+    reportedTotalCapacity: { type: "NUMBER", description: "표의 TOTAL 행에 적힌 100% FULL 용량 합계. 연료 관련 표가 여러 개(예: HEAVY FUEL OIL TANKS, DIESEL OIL TANKS)면 각 표의 TOTAL을 전부 더한 값. tanks 배열의 capacity 합계와 반드시 (반올림 오차 범위 내에서) 같아야 한다." }
   }
 };
 
 const ROB_REPORT_SCHEMA = {
   type: "OBJECT",
-  required: ["reportDate", "rob"],
+  required: ["reportDate", "rob", "reportedGrandTotal"],
   properties: {
     reportDate: { type: "STRING", description: "ISO 8601 형식. Report에 시각이 없으면 00:00:00으로." },
     meta: {
@@ -151,6 +156,10 @@ const ROB_REPORT_SCHEMA = {
         }
       }
     },
+    // rob 배열의 robM3 합계와 코드가 대조 검산할 자기 검증용 필드 (Peru Prosperity 사건: 파일명의
+    // 실제 조사일과 다른 예전 날짜의 시트를 읽어버린 적이 있음 -- 이 필드 자체는 잘못된 시트를
+    // 골랐는지는 못 잡아내지만, 최소한 고른 시트 안에서 행 추출이 누락/중복 없이 됐는지는 검증한다).
+    reportedGrandTotal: { type: "NUMBER", description: "Report에 적힌 모든 'Total' 행의 G.O.V.(부피) 값을 전부 합산한 값. Grade 구간이 여러 개(예: Heavy Fuel Oil Total, Diesel Oil Total)면 전부 더할 것. rob 배열의 robM3 합계와 반드시 (반올림 오차 범위 내에서) 같아야 한다." },
     notes: { type: "STRING", description: "밀도 역산을 했다면 그 계산 근거, 이름-Grade 불일치를 Report 기준으로 바로잡았다면 그 내용을 여기에 기록." }
   }
 };
@@ -161,7 +170,23 @@ const SHARED_PRINCIPLES = `
 2. Tank의 물리적 이름이 어떤 연료(예: "LS FO", "H.F.O.")를 암시하더라도, Report 자체가 명시한 Grade 구분(표 제목, 합계 라벨, Grade 컬럼 등)이 항상 우선한다. 이름과 명시된 Grade가 다르면 명시된 Grade를 따르고 notes에 기록하라.
 3. Report에 부피(Volume/M3/G.O.V.) 컬럼이 없고 중량(Weight/MT)만 있다면, 같은 Report 안에서 Volume과 Weight가 함께 있는 동일 적재율 행들을 찾아 Grade 계열별 밀도(Weight/Volume)를 역산하고, 그 밀도로 중량만 있는 항목을 부피로 환산하라. 계산에 쓴 값이 물리적으로 불가능하면(예: 밀도가 1.0을 넘는 등) 그 행은 버리고 다른 신뢰 가능한 행으로 다시 계산하라. 환산 후 가능하면 Report에 표시된 계열 합계(Total MT)와 일치하는지 스스로 검산하라.
 4. grade 값은 반드시 다음 표준 코드 중 하나로만 적어라: VLSFO, HFO, HSFO, LSFO, LSHFO, MGO, LSMGO. Report의 원문 표기가 이와 다르게 쓰여 있어도(예: "HIGH SULPHUR HFO", "MARINE GAS OIL", "M.D.O.") 의미가 가장 가까운 표준 코드로 변환해서 적어라 (고유황유 계열은 HFO/HSFO 중 하나, 저유황 경유 계열은 보통 LSMGO, 일반 경유는 MGO). 표준 코드 중 어느 것과도 의미가 명확히 다른 특수한 Grade만 예외적으로 원문 그대로 적고 notes에 이유를 남겨라.
+5. 표/문서에 실제로 인쇄되어 있는 항목만 나열하라. Port에 어떤 Tank가 있다고 해서 Starboard에도
+   똑같은 이름/용량의 Tank가 있을 것이라고 추측해서 만들어내지 마라 -- 실제로는 좌우가 비대칭인
+   경우가 많다(예: Port에만 Settling/Service Tank가 있고 Starboard엔 없음, 또는 Port/Starboard
+   Tank의 용량이나 계열(Grade)이 서로 다름). 표에 없는 Overflow/여분 Tank도 만들어내지 마라.
+   반대로 표에 있는 항목을 누락하지도 마라 (특히 저유황(Low Sulphur/L.S./L.SUR) 계열처럼 이름이
+   비슷한 Tank가 여러 줄 있을 때 일부만 뽑고 끝내는 실수를 하지 마라). 최종 결과를 표의 TOTAL
+   행과 스스로 대조해서, 개수와 합계가 정확히 일치하는지 확인한 뒤에만 답하라.
 `.trim();
+
+// 코드가 AI의 자기 검증 필드(reportedTankCount/reportedTotalCapacity/reportedGrandTotal)와
+// 실제 추출 결과를 대조할 때 쓰는 허용 오차. 반올림 등 정상적인 오차는 통과시키되, Peru
+// Prosperity 사건 수준의 큰 불일치(수백 단위 누락/허구 생성)는 반드시 걸러낸다.
+function withinTolerance(actual, expected) {
+  if (typeof expected !== "number" || Number.isNaN(expected)) return true; // AI가 값을 못 줬으면 이 검증은 건너뜀(스키마 required라 보통 없음)
+  const tolerance = Math.max(2, Math.abs(expected) * 0.01);
+  return Math.abs(actual - expected) <= tolerance;
+}
 
 function findExisting(dataDir, vesselId) {
   const p = path.join(dataDir, "vessels", `${vesselId}.json`);
@@ -170,6 +195,26 @@ function findExisting(dataDir, vesselId) {
 
 function sanitizeSlug(reportDate) {
   return reportDate.replace(/[^0-9]/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+}
+
+// ROB Report 파일명에 박힌 조사일(예: "...-17.08.2026.xls")과 xlsx 시트 이름을 대조해, 여러 날짜의
+// 시트가 섞여 있는 파일(Peru Prosperity 사건: "bunker survey"/지난 4월치 시트들과 실제 조사일인
+// "17.08.26" 시트가 한 파일에 같이 있었음)에서 엉뚱한 과거 시트를 골라버리는 사고를 막는다.
+function normalizeDmy(str) {
+  const m = String(str).match(/(\d{1,2})[.\-\/](\d{1,2})[.\-\/](\d{2,4})/);
+  if (!m) return null;
+  const d = m[1].padStart(2, "0");
+  const mo = m[2].padStart(2, "0");
+  const y = m[3].length === 4 ? m[3].slice(2) : m[3].padStart(2, "0");
+  return `${d}.${mo}.${y}`;
+}
+
+function pickReportSheetNames(sheetNames, filename) {
+  if (sheetNames.length === 1) return sheetNames;
+  const targetDate = normalizeDmy(filename);
+  if (!targetDate) return sheetNames; // 파일명에서 날짜를 못 찾으면 기존처럼 전체 시트를 넘긴다
+  const matches = sheetNames.filter(name => normalizeDmy(name) === targetDate);
+  return matches.length === 1 ? matches : sheetNames; // 정확히 하나만 일치할 때만 좁히고, 애매하면 안전하게 전체를 넘긴다
 }
 
 function fuzzyMatchTankId(tankName, tanks) {
@@ -199,13 +244,20 @@ async function processManifestDir(dir) {
     const sha256 = crypto.createHash("sha256").update(bytes).digest("hex");
     console.log(`[parse] ${vesselId}: Capacity Plan 분석 중 (${manifest.capacityPlanFilename})`);
     const aiResult = await callGemini({
-      system: `너는 선박 Capacity Plan 도면을 읽어 Tank 목록을 구조화하는 전문가다. ${SHARED_PRINCIPLES}\nTank의 Frame 범위(FR.NO)와 100% Capacity를 표에서 정확히 읽어라. 선체 외판에 붙어 좌우로 넓게 배치된 대형 저장 Tank(Storage)는 side를 PORT 또는 STBD로, 그 외 Settling/Service/Overflow Tank나 이중저(Double Bottom) Tank는 side를 CL로 지정하라.`,
+      system: `너는 선박 Capacity Plan 도면을 읽어 Tank 목록을 구조화하는 전문가다. ${SHARED_PRINCIPLES}\nTank의 Frame 범위(FR.NO)와 100% Capacity를 표에서 정확히 읽어라. 선체 외판에 붙어 좌우로 넓게 배치된 대형 저장 Tank(Storage)는 side를 PORT 또는 STBD로, 그 외 Settling/Service/Overflow Tank나 이중저(Double Bottom) Tank는 side를 CL로 지정하라. reportedTankCount/reportedTotalCapacity는 표를 다시 한번 세어보고 채우는 자기 검산용 항목이니 대충 tanks 배열 길이/합계를 복사하지 말고 실제로 표를 다시 확인해서 채워라.`,
       parts: [
         { inlineData: { mimeType: "application/pdf", data: bytes.toString("base64") } },
         { text: "이 Capacity Plan 도면에서 선박명과 전체 Tank 목록(Fuel Oil / Diesel Oil 계열)을 추출해줘." }
       ],
       schema: VESSEL_TANKS_SCHEMA
     });
+    if (aiResult.tanks.length !== aiResult.reportedTankCount) {
+      throw new Error(`Capacity Plan 판독 불일치: 추출된 Tank 개수(${aiResult.tanks.length})가 AI 스스로 센 표 행 개수(${aiResult.reportedTankCount})와 다릅니다. Tank를 빠뜨렸거나(누락) 존재하지 않는 Tank를 만들어냈을 가능성이 있습니다 -- 사람이 원본 PDF를 직접 확인해야 합니다.`);
+    }
+    const extractedTotal = aiResult.tanks.reduce((sum, t) => sum + (typeof t.capacity === "number" ? t.capacity : 0), 0);
+    if (!withinTolerance(extractedTotal, aiResult.reportedTotalCapacity)) {
+      throw new Error(`Capacity Plan 판독 불일치: 추출된 Tank들의 Capacity 합계(${extractedTotal})가 표의 TOTAL(${aiResult.reportedTotalCapacity})과 다릅니다. Capacity 오독이나 Tank 누락/허구 생성 가능성이 있습니다 -- 사람이 원본 PDF를 직접 확인해야 합니다.`);
+    }
     const tanks = computeLayout(aiResult.tanks, aiResult.pxPerFrameHint);
     const groupsPresent = [...new Set(tanks.map(t => t.group))];
     vesselConfig = {
@@ -216,7 +268,12 @@ async function processManifestDir(dir) {
       vesselName: vesselName || aiResult.vesselName,
       sourceHash: sha256,
       sourceFile: manifest.capacityPlanFilename,
-      display: { decimals: 1, unit: "MT", missingLabel: "N/A", minVisibleCapacity: 100 },
+      // 나중에 이 선박 데이터를 사람이 재검토할 때(예: 다른 Report 추가 시 원본 대조) 쓸 수 있도록
+      // AI가 읽은 표의 TOTAL을 그대로 남겨둔다 -- 검증 로직이 이미 이 값과 tanks 합계 일치를
+      // 확인했으므로 신뢰할 수 있는 참고값이다.
+      sourceReportedTankCount: aiResult.reportedTankCount,
+      sourceReportedTotalCapacity: aiResult.reportedTotalCapacity,
+      display: { decimals: 1, unit: "M³", missingLabel: "N/A", minVisibleCapacity: 100 },
       hull: { centerlineY: HULL_TEMPLATE.CL_Y, sternLine: { x: HULL_TEMPLATE.STERN_X, yTop: HULL_TEMPLATE.CL_Y - HULL_TEMPLATE.STERN_HALF, yBottom: HULL_TEMPLATE.CL_Y + HULL_TEMPLATE.STERN_HALF } },
       groups: groupsPresent.map(id => ({ id, label: GROUP_LABELS[id] || id })),
       tanks
@@ -234,15 +291,23 @@ async function processManifestDir(dir) {
     const knownTanks = vesselConfig.tanks.map(t => ({ id: t.id, name: t.name }));
     console.log(`[parse] ${vesselId}: ROB Report 분석 중 (${manifest.robReportFilename})`);
 
+    const tankListInstruction = `아래는 이 선박의 알려진 Tank 목록이다 (tankName에는 이 목록에 있는 name 값을 철자/기호까지 정확히 그대로 복사해서 적어라 (Port/Starboard 등을 짐작해서 새로 만들지 말고, 이 목록에 없는 이름은 절대 쓰지 말 것)):\n${JSON.stringify(knownTanks)}`;
+
     let aiResult;
     if (ext === ".xlsx" || ext === ".xls") {
       const wb = XLSX.readFile(filePath);
+      const sheetNamesToUse = pickReportSheetNames(wb.SheetNames, manifest.robReportFilename);
+      if (sheetNamesToUse.length < wb.SheetNames.length) {
+        console.log(`[parse] ${vesselId}: 파일명 날짜와 일치하는 시트만 사용: ${sheetNamesToUse.join(", ")} (전체 시트: ${wb.SheetNames.join(", ")})`);
+      } else if (wb.SheetNames.length > 1) {
+        console.warn(`[parse] ${vesselId}: 시트가 ${wb.SheetNames.length}개인데 파일명 날짜와 정확히 일치하는 시트를 찾지 못해 전체 시트를 AI에게 넘깁니다 -- 과거 날짜 시트를 잘못 고를 위험이 있으니 reportDate와 결과를 꼼꼼히 검토하세요.`);
+      }
       const sheets = {};
-      for (const name of wb.SheetNames) sheets[name] = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, raw: true, defval: "" });
+      for (const name of sheetNamesToUse) sheets[name] = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, raw: true, defval: "" });
       aiResult = await callGemini({
-        system: `너는 선박 Bunker ROB Report 표를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}`,
+        system: `너는 선박 Bunker ROB Report 표를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}\n이 파일에 여러 날짜의 시트가 섞여 있을 수 있다 -- 반드시 실제 조사일(파일명 또는 시트 안의 Date 항목)에 해당하는 시트 하나만 사용하고, 지난 날짜의 오래된 시트를 쓰지 마라.`,
         parts: [
-          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName에는 이 목록에 있는 name 값을 철자/기호까지 정확히 그대로 복사해서 적어라 (Port/Starboard 등을 짐작해서 새로 만들지 말고, 이 목록에 없는 이름은 절대 쓰지 말 것)):\n${JSON.stringify(knownTanks)}\n\n아래는 Excel Report의 원본 표(시트별 2차원 배열, header:1)이다:\n${JSON.stringify(sheets)}` }
+          { text: `${tankListInstruction}\n\n아래는 Excel Report의 원본 표(시트별 2차원 배열, header:1)이다:\n${JSON.stringify(sheets)}` }
         ],
         schema: ROB_REPORT_SCHEMA
       });
@@ -252,10 +317,15 @@ async function processManifestDir(dir) {
         system: `너는 선박 Bunker ROB Report를 읽어 Tank별 ROB를 구조화하는 전문가다. ${SHARED_PRINCIPLES}`,
         parts: [
           { inlineData: { mimeType: "application/pdf", data: bytes.toString("base64") } },
-          { text: `아래는 이 선박의 알려진 Tank 목록이다 (tankName에는 이 목록에 있는 name 값을 철자/기호까지 정확히 그대로 복사해서 적어라 (Port/Starboard 등을 짐작해서 새로 만들지 말고, 이 목록에 없는 이름은 절대 쓰지 말 것)):\n${JSON.stringify(knownTanks)}\n\n이 Bunker ROB Report에서 Tank별 ROB를 추출해줘.` }
+          { text: `${tankListInstruction}\n\n이 Bunker ROB Report에서 Tank별 ROB를 추출해줘.` }
         ],
         schema: ROB_REPORT_SCHEMA
       });
+    }
+
+    const extractedRobTotal = aiResult.rob.reduce((sum, r) => sum + (typeof r.robM3 === "number" ? r.robM3 : 0), 0);
+    if (!withinTolerance(extractedRobTotal, aiResult.reportedGrandTotal)) {
+      throw new Error(`ROB Report 판독 불일치: 추출된 ROB 합계(${extractedRobTotal})가 Report의 TOTAL 합계(${aiResult.reportedGrandTotal})와 다릅니다. 행 누락/중복이나 잘못된(예: 오래된) 시트를 읽었을 가능성이 있습니다 -- 사람이 원본 Report를 직접 확인해야 합니다.`);
     }
 
     const rob = [];

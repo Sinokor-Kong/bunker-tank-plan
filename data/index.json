@@ -140,5 +140,15 @@
         "reportDate": "2026-08-17T12:00:00"
       }
     ]
+  },
+  {
+    "vesselId": "m-t-mongolia-prosperity",
+    "vesselName": "M/T MONGOLIA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-23-12-00-00",
+        "reportDate": "2026-08-23T12:00:00"
+      }
+    ]
   }
 ]

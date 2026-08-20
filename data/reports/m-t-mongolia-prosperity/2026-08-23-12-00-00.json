@@ -1,0 +1,26 @@
+{
+  "vesselId": "m-t-mongolia-prosperity",
+  "reportDate": "2026-08-23T12:00:00",
+  "meta": {
+    "position": "SEA",
+    "condition": "SEA",
+    "trim": 3
+  },
+  "rob": [
+    {
+      "tankId": "no-1-h-f-o-t-p",
+      "grade": "HFO",
+      "rob": 2661.49
+    },
+    {
+      "tankId": "no-2-h-f-o-t-s",
+      "grade": "HFO",
+      "rob": 480
+    },
+    {
+      "tankId": "no-3-l-s-h-f-o-t-s",
+      "grade": "VLSFO",
+      "rob": 500
+    }
+  ]
+}

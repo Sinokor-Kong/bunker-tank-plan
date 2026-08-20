@@ -1,0 +1,85 @@
+{
+  "vesselId": "m-t-mongolia-prosperity",
+  "vesselName": "M/T MONGOLIA PROSPERITY",
+  "sourceHash": "979542b54d155d5a69de270e320ef7bd432d6a2fcae3c71550ea8e0470d4f54e",
+  "sourceFile": "05-Capacity_Plan.pdf",
+  "sourceReportedTankCount": 3,
+  "sourceReportedTotalCapacity": 7353,
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A",
+    "minVisibleCapacity": 100
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no-1-h-f-o-t-p",
+      "name": "NO.1 H.F.O.T. (P)",
+      "group": "PORT",
+      "capacity": 3769.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 1,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 456,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-h-f-o-t-s",
+      "name": "NO.2 H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 2167.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 2,
+      "position": {
+        "x": 846,
+        "y": 390
+      },
+      "size": {
+        "w": 216,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-3-l-s-h-f-o-t-s",
+      "name": "NO.3 L.S.H.F.O.T. (S)",
+      "group": "STBD",
+      "capacity": 1416.1,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 3,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      }
+    }
+  ]
+}
