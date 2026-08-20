@@ -1,0 +1,10 @@
+{
+  "vesselId": "m-t-kuwait-prosperity",
+  "vesselName": "M/T KUWAIT PROSPERITY",
+  "isNewVessel": true,
+  "hasCapacityPlan": true,
+  "capacityPlanFilename": "(FG-04) CAPACITY PLAN & DEADWEIGHT SCALE.pdf",
+  "hasRobReport": true,
+  "robReportFilename": "Kuwait Prosperity Bunker Report.xlsx",
+  "uploadedAt": "2026-08-20T11:48:55.203Z"
+}
