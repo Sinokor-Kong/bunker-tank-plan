@@ -1,0 +1,240 @@
+{
+  "vesselId": "m-t-peru-prosperity",
+  "vesselName": "M/T PERU PROSPERITY",
+  "sourceHash": "3e7ae81f6b2a5bedbf9a6bf5228a4c5b98f9a85eb0651226c1952617c97cba20",
+  "sourceFile": "3B101001BB-CAPACITY PLAN WITH DEADWEIGHT SCALE.pdf",
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A",
+    "minVisibleCapacity": 100
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV.)"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no-1-h-f-o-t-p",
+      "name": "NO.1 H.F.O.T (P)",
+      "group": "PORT",
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 1,
+      "capacity": 2347.7,
+      "position": {
+        "x": 1374,
+        "y": 130
+      },
+      "size": {
+        "w": 168,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-1-h-f-o-t-s",
+      "name": "NO.1 H.F.O.T (S)",
+      "group": "STBD",
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 2,
+      "capacity": 2347.7,
+      "position": {
+        "x": 1374,
+        "y": 390
+      },
+      "size": {
+        "w": 168,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-l-sur-hfot-p",
+      "name": "NO.2 L.SUR.HFOT (P)",
+      "group": "PORT",
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 3,
+      "capacity": 1684,
+      "position": {
+        "x": 726,
+        "y": 130
+      },
+      "size": {
+        "w": 648,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-h-f-o-t-s",
+      "name": "NO.2 H.F.O.T (S)",
+      "group": "STBD",
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 4,
+      "capacity": 2321.6,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 768,
+        "h": 130
+      }
+    },
+    {
+      "id": "h-f-o-sett-t-p",
+      "name": "H.F.O.SETT.T (P)",
+      "group": "CL",
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 5,
+      "capacity": 241.6,
+      "position": {
+        "x": 1278,
+        "y": 267
+      },
+      "size": {
+        "w": 96,
+        "h": 117
+      }
+    },
+    {
+      "id": "h-f-o-serv-t-p",
+      "name": "H.F.O.SERV.T (P)",
+      "group": "CL",
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 6,
+      "capacity": 181.2,
+      "position": {
+        "x": 1206,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      }
+    },
+    {
+      "id": "hfo-l-sur-serv-t-p",
+      "name": "HFO.L.SUR.SERV.T (P)",
+      "group": "CL",
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 7,
+      "capacity": 151,
+      "position": {
+        "x": 1134,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      }
+    },
+    {
+      "id": "hfo-l-sur-sett-t-p",
+      "name": "HFO.L.SUR.SETT.T (P)",
+      "group": "CL",
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 8,
+      "capacity": 151,
+      "position": {
+        "x": 1086,
+        "y": 267
+      },
+      "size": {
+        "w": 48,
+        "h": 117
+      }
+    },
+    {
+      "id": "f-o-overf-t-p",
+      "name": "F.O.OVERF.T (P)",
+      "group": "CL",
+      "role": "OVERFLOW",
+      "onShell": false,
+      "order": 9,
+      "excludeFromTotal": true,
+      "position": {
+        "x": 1374,
+        "y": 267
+      },
+      "size": {
+        "w": 48,
+        "h": 117
+      }
+    },
+    {
+      "id": "m-d-o-stor-t-s",
+      "name": "M.D.O.STOR.T (S)",
+      "group": "STBD",
+      "role": "STORAGE",
+      "onShell": false,
+      "order": 10,
+      "capacity": 294.4,
+      "position": {
+        "x": 1086,
+        "y": 267
+      },
+      "size": {
+        "w": 288,
+        "h": 117
+      }
+    },
+    {
+      "id": "m-d-o-sett-t-p",
+      "name": "M.D.O.SETT.T (P)",
+      "group": "CL",
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 11,
+      "capacity": 107.2,
+      "position": {
+        "x": 678,
+        "y": 267
+      },
+      "size": {
+        "w": 48,
+        "h": 117
+      }
+    },
+    {
+      "id": "m-d-o-serv-t-p",
+      "name": "M.D.O.SERV.T (P)",
+      "group": "CL",
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 12,
+      "capacity": 148.3,
+      "position": {
+        "x": 606,
+        "y": 267
+      },
+      "size": {
+        "w": 72,
+        "h": 117
+      }
+    }
+  ]
+}
