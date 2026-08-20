@@ -3,8 +3,8 @@
   "vesselName": "M/T SAMOA PROSPERITY",
   "sourceHash": "c37aa9307a17580425e3c84097a08a7c7a06e78ec36b05763039c58465e7df49",
   "sourceFile": "SMPS - Capacity plan.pdf",
-  "sourceReportedTankCount": 9,
-  "sourceReportedTotalCapacity": 1110.9,
+  "sourceReportedTankCount": 2,
+  "sourceReportedTotalCapacity": 7278.5,
   "display": {
     "decimals": 1,
     "unit": "M³",
@@ -27,165 +27,41 @@
     {
       "id": "STBD",
       "label": "STARBOARD SIDE"
-    },
-    {
-      "id": "CL",
-      "label": "CENTERLINE (SETT. / SERV.)"
     }
   ],
   "tanks": [
     {
-      "id": "no-1-h-f-o-tank-p",
-      "name": "NO.1 H.F.O. TANK (P)",
+      "id": "no-1-fuel-oil-tank-p",
+      "name": "NO.1 FUEL OIL TANK (P)",
       "group": "PORT",
-      "capacity": 297.8,
+      "capacity": 3733.7,
       "role": "STORAGE",
       "onShell": true,
       "order": 1,
       "position": {
-        "x": 822,
+        "x": 606,
         "y": 130
       },
       "size": {
-        "w": 288,
+        "w": 456,
         "h": 130
       }
     },
     {
-      "id": "no-1-h-f-o-tank-s",
-      "name": "NO.1 H.F.O. TANK (S)",
+      "id": "no-2-fuel-oil-tank-s",
+      "name": "NO.2 FUEL OIL TANK (S)",
       "group": "STBD",
-      "capacity": 297.8,
+      "capacity": 3544.8,
       "role": "STORAGE",
       "onShell": true,
       "order": 2,
       "position": {
-        "x": 822,
-        "y": 390
-      },
-      "size": {
-        "w": 288,
-        "h": 130
-      }
-    },
-    {
-      "id": "no-2-h-f-o-tank-p",
-      "name": "NO.2 H.F.O. TANK (P)",
-      "group": "PORT",
-      "capacity": 191,
-      "role": "STORAGE",
-      "onShell": true,
-      "order": 3,
-      "position": {
-        "x": 606,
-        "y": 130
-      },
-      "size": {
-        "w": 216,
-        "h": 130
-      }
-    },
-    {
-      "id": "no-2-h-f-o-tank-s",
-      "name": "NO.2 H.F.O. TANK (S)",
-      "group": "STBD",
-      "capacity": 191,
-      "role": "STORAGE",
-      "onShell": true,
-      "order": 4,
-      "position": {
         "x": 606,
         "y": 390
       },
       "size": {
-        "w": 216,
+        "w": 456,
         "h": 130
-      }
-    },
-    {
-      "id": "h-f-o-sett-tank-p",
-      "name": "H.F.O. SETT. TANK (P)",
-      "group": "CL",
-      "capacity": 28.5,
-      "role": "SETTLING",
-      "onShell": false,
-      "order": 5,
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "size": {
-        "w": 0,
-        "h": 0
-      }
-    },
-    {
-      "id": "h-f-o-serv-tank-p",
-      "name": "H.F.O. SERV. TANK (P)",
-      "group": "CL",
-      "capacity": 28.5,
-      "role": "SERVICE",
-      "onShell": false,
-      "order": 6,
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "size": {
-        "w": 0,
-        "h": 0
-      }
-    },
-    {
-      "id": "f-o-overflow-tank-c",
-      "name": "F.O. OVERFLOW TANK (C)",
-      "group": "CL",
-      "capacity": 15.6,
-      "role": "OVERFLOW",
-      "onShell": false,
-      "order": 7,
-      "excludeFromTotal": true,
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "size": {
-        "w": 0,
-        "h": 0
-      }
-    },
-    {
-      "id": "d-o-storage-tank-s",
-      "name": "D.O. STORAGE TANK (S)",
-      "group": "STBD",
-      "capacity": 48.2,
-      "role": "STORAGE",
-      "onShell": true,
-      "order": 8,
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "size": {
-        "w": 0,
-        "h": 0
-      }
-    },
-    {
-      "id": "d-o-serv-tank-s",
-      "name": "D.O. SERV. TANK (S)",
-      "group": "CL",
-      "capacity": 12.5,
-      "role": "SERVICE",
-      "onShell": false,
-      "order": 9,
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "size": {
-        "w": 0,
-        "h": 0
       }
     }
   ]
