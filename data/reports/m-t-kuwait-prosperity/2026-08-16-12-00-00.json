@@ -1,0 +1,66 @@
+{
+  "vesselId": "m-t-kuwait-prosperity",
+  "reportDate": "2026-08-16T12:00:00",
+  "meta": {
+    "condition": "At Anchor",
+    "position": "At Anchor",
+    "trim": 3.4
+  },
+  "rob": [
+    {
+      "tankId": "no-1-h-f-o-tk-p",
+      "grade": "HSFO",
+      "rob": 755.75
+    },
+    {
+      "tankId": "no-1-h-f-o-tk-s",
+      "grade": "HSFO",
+      "rob": 747.7
+    },
+    {
+      "tankId": "no-2-h-f-o-tk-p",
+      "grade": "LSFO",
+      "rob": 863
+    },
+    {
+      "tankId": "no-2-h-f-o-tk-s",
+      "grade": "HSFO",
+      "rob": 684.71
+    },
+    {
+      "tankId": "h-f-o-sett-tk-p",
+      "grade": "HSFO",
+      "rob": 126.7
+    },
+    {
+      "tankId": "h-f-o-serv-tk-p",
+      "grade": "HSFO",
+      "rob": 101
+    },
+    {
+      "tankId": "h-f-o-sett-tk-s",
+      "grade": "LSFO",
+      "rob": 81.5
+    },
+    {
+      "tankId": "h-f-o-serv-tk-s",
+      "grade": "LSFO",
+      "rob": 93.7
+    },
+    {
+      "tankId": "d-o-storage-tk-s",
+      "grade": "MGO",
+      "rob": 202.3
+    },
+    {
+      "tankId": "d-o-storage-tk-p",
+      "grade": "MGO",
+      "rob": 357.87
+    },
+    {
+      "tankId": "d-o-serv-tk",
+      "grade": "MGO",
+      "rob": 76.6
+    }
+  ]
+}
