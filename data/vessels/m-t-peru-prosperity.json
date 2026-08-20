@@ -5,7 +5,7 @@
   "sourceFile": "3B101001BB-CAPACITY PLAN WITH DEADWEIGHT SCALE.pdf",
   "display": {
     "decimals": 1,
-    "unit": "MT",
+    "unit": "M³",
     "missingLabel": "N/A",
     "minVisibleCapacity": 100
   },
