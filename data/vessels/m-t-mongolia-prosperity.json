@@ -7,7 +7,7 @@
   "sourceReportedTotalCapacity": 7353,
   "display": {
     "decimals": 1,
-    "unit": "MT",
+    "unit": "M³",
     "missingLabel": "N/A",
     "minVisibleCapacity": 100
   },

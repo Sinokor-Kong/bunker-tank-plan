@@ -273,7 +273,7 @@ async function processManifestDir(dir) {
       // 확인했으므로 신뢰할 수 있는 참고값이다.
       sourceReportedTankCount: aiResult.reportedTankCount,
       sourceReportedTotalCapacity: aiResult.reportedTotalCapacity,
-      display: { decimals: 1, unit: "MT", missingLabel: "N/A", minVisibleCapacity: 100 },
+      display: { decimals: 1, unit: "M³", missingLabel: "N/A", minVisibleCapacity: 100 },
       hull: { centerlineY: HULL_TEMPLATE.CL_Y, sternLine: { x: HULL_TEMPLATE.STERN_X, yTop: HULL_TEMPLATE.CL_Y - HULL_TEMPLATE.STERN_HALF, yBottom: HULL_TEMPLATE.CL_Y + HULL_TEMPLATE.STERN_HALF } },
       groups: groupsPresent.map(id => ({ id, label: GROUP_LABELS[id] || id })),
       tanks
