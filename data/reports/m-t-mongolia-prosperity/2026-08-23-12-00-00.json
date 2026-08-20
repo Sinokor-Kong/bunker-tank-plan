@@ -2,55 +2,25 @@
   "vesselId": "m-t-mongolia-prosperity",
   "reportDate": "2026-08-23T12:00:00",
   "meta": {
-    "condition": "SEA",
     "position": "SEA",
+    "condition": "SEA",
     "trim": 3
   },
   "rob": [
     {
-      "tankId": "no-1-f-o-tank-p",
+      "tankId": "no-1-h-f-o-t-p",
       "grade": "HFO",
       "rob": 2661.49
     },
     {
-      "tankId": "no-2-f-o-tank-s",
+      "tankId": "no-2-h-f-o-t-s",
       "grade": "HFO",
       "rob": 480
     },
     {
-      "tankId": "f-o-sett-tank-s",
-      "grade": "HFO",
-      "rob": 39
-    },
-    {
-      "tankId": "f-o-serv-tank-s",
-      "grade": "HFO",
-      "rob": 91.5
-    },
-    {
-      "tankId": "no-1-f-o-tank-s",
+      "tankId": "no-3-l-s-h-f-o-t-s",
       "grade": "VLSFO",
       "rob": 500
-    },
-    {
-      "tankId": "f-o-sett-tank-p",
-      "grade": "VLSFO",
-      "rob": 16.5
-    },
-    {
-      "tankId": "f-o-serv-tank-p",
-      "grade": "VLSFO",
-      "rob": 46
-    },
-    {
-      "tankId": "d-o-tank-s",
-      "grade": "LSMGO",
-      "rob": 346.81
-    },
-    {
-      "tankId": "d-o-serv-tank",
-      "grade": "LSMGO",
-      "rob": 30
     }
   ]
 }
