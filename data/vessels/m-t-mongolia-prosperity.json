@@ -1,0 +1,225 @@
+{
+  "vesselId": "m-t-mongolia-prosperity",
+  "vesselName": "M/T MONGOLIA PROSPERITY",
+  "sourceHash": "979542b54d155d5a69de270e320ef7bd432d6a2fcae3c71550ea8e0470d4f54e",
+  "sourceFile": "05-Capacity_Plan.pdf",
+  "sourceReportedTankCount": 11,
+  "sourceReportedTotalCapacity": 7365.8,
+  "display": {
+    "decimals": 1,
+    "unit": "MT",
+    "missingLabel": "N/A",
+    "minVisibleCapacity": 100
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    },
+    {
+      "id": "CL",
+      "label": "CENTERLINE (SETT. / SERV.)"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no-1-f-o-tank-p",
+      "name": "NO.1 F.O. TANK (P)",
+      "group": "PORT",
+      "capacity": 1851.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 1,
+      "position": {
+        "x": 1422,
+        "y": 130
+      },
+      "size": {
+        "w": 192,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-1-f-o-tank-s",
+      "name": "NO.1 F.O. TANK (S)",
+      "group": "STBD",
+      "capacity": 1851.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 2,
+      "position": {
+        "x": 1422,
+        "y": 390
+      },
+      "size": {
+        "w": 192,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-f-o-tank-p",
+      "name": "NO.2 F.O. TANK (P)",
+      "group": "PORT",
+      "capacity": 1324.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 3,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 216,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-f-o-tank-s",
+      "name": "NO.2 F.O. TANK (S)",
+      "group": "STBD",
+      "capacity": 1324.2,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 4,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 216,
+        "h": 130
+      }
+    },
+    {
+      "id": "f-o-sett-tank-p",
+      "name": "F.O. SETT. TANK (P)",
+      "group": "CL",
+      "capacity": 152.3,
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 5,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "f-o-sett-tank-s",
+      "name": "F.O. SETT. TANK (S)",
+      "group": "CL",
+      "capacity": 152.3,
+      "role": "SETTLING",
+      "onShell": false,
+      "order": 6,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "f-o-serv-tank-p",
+      "name": "F.O. SERV. TANK (P)",
+      "group": "CL",
+      "capacity": 152.3,
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 7,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "f-o-serv-tank-s",
+      "name": "F.O. SERV. TANK (S)",
+      "group": "CL",
+      "capacity": 152.3,
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 8,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "d-o-tank-p",
+      "name": "D.O. TANK (P)",
+      "group": "CL",
+      "capacity": 185,
+      "role": "STORAGE",
+      "onShell": false,
+      "order": 9,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "d-o-tank-s",
+      "name": "D.O. TANK (S)",
+      "group": "CL",
+      "capacity": 185,
+      "role": "STORAGE",
+      "onShell": false,
+      "order": 10,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    },
+    {
+      "id": "d-o-serv-tank",
+      "name": "D.O. SERV. TANK",
+      "group": "CL",
+      "capacity": 35,
+      "role": "SERVICE",
+      "onShell": false,
+      "order": 11,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "w": 0,
+        "h": 0
+      }
+    }
+  ]
+}
