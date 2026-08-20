@@ -1,0 +1,68 @@
+{
+  "vesselId": "m-t-samoa-prosperity",
+  "vesselName": "M/T SAMOA PROSPERITY",
+  "sourceHash": "c37aa9307a17580425e3c84097a08a7c7a06e78ec36b05763039c58465e7df49",
+  "sourceFile": "SMPS - Capacity plan.pdf",
+  "sourceReportedTankCount": 2,
+  "sourceReportedTotalCapacity": 7278.5,
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A",
+    "minVisibleCapacity": 100
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "no-1-fuel-oil-tank-p",
+      "name": "NO.1 FUEL OIL TANK (P)",
+      "group": "PORT",
+      "capacity": 3733.7,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 1,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 456,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-fuel-oil-tank-s",
+      "name": "NO.2 FUEL OIL TANK (S)",
+      "group": "STBD",
+      "capacity": 3544.8,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 2,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 456,
+        "h": 130
+      }
+    }
+  ]
+}

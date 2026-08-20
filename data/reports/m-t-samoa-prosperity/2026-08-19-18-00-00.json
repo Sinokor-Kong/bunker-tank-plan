@@ -1,0 +1,21 @@
+{
+  "vesselId": "m-t-samoa-prosperity",
+  "reportDate": "2026-08-19T18:00:00",
+  "meta": {
+    "position": "JUAYMAH",
+    "condition": "Departure",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no-1-fuel-oil-tank-p",
+      "grade": "VLSFO",
+      "rob": 3288.5
+    },
+    {
+      "tankId": "no-2-fuel-oil-tank-s",
+      "grade": "VLSFO",
+      "rob": 119.88
+    }
+  ]
+}
