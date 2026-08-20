@@ -1,0 +1,46 @@
+{
+  "vesselId": "m-t-samoa-prosperity",
+  "reportDate": "2026-08-19T18:00:00",
+  "meta": {
+    "condition": "Departure",
+    "position": "JUAYMAH",
+    "trim": 0
+  },
+  "rob": [
+    {
+      "tankId": "no-1-h-f-o-tank-p",
+      "grade": "VLSFO",
+      "rob": 3288.5
+    },
+    {
+      "tankId": "no-1-h-f-o-tank-s",
+      "grade": "VLSFO",
+      "rob": 119.88
+    },
+    {
+      "tankId": "h-f-o-sett-tank-p",
+      "grade": "VLSFO",
+      "rob": 90
+    },
+    {
+      "tankId": "h-f-o-serv-tank-p",
+      "grade": "VLSFO",
+      "rob": 98
+    },
+    {
+      "tankId": "f-o-overflow-tank-c",
+      "grade": "VLSFO",
+      "rob": 46
+    },
+    {
+      "tankId": "d-o-storage-tank-s",
+      "grade": "LSMGO",
+      "rob": 394.1
+    },
+    {
+      "tankId": "d-o-serv-tank-s",
+      "grade": "LSMGO",
+      "rob": 32.88
+    }
+  ]
+}

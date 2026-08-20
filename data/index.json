@@ -150,5 +150,15 @@
         "reportDate": "2026-08-23T12:00:00"
       }
     ]
+  },
+  {
+    "vesselId": "m-t-samoa-prosperity",
+    "vesselName": "M/T SAMOA PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-19-18-00-00",
+        "reportDate": "2026-08-19T18:00:00"
+      }
+    ]
   }
 ]
