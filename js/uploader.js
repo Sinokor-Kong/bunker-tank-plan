@@ -73,14 +73,23 @@ function setStatus(el, text, kind) {
   el.className = "upload-status" + (kind ? ` upload-status--${kind}` : "");
 }
 
-async function waitForRunAndPR(statusEl, afterTimestampMs) {
+async function waitForRunAndPR(statusEl, afterTimestampMs, manifestCommitMessage) {
   setStatus(statusEl, "GitHub Actions가 분석 중입니다... (보통 30~90초 소요)", "pending");
   const deadline = Date.now() + 6 * 60 * 1000; // 6분 타임아웃
   let run = null;
   while (Date.now() < deadline) {
     await new Promise(r => setTimeout(r, 5000));
     const runs = await ghRequest(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/runs?event=push&per_page=10`);
-    run = (runs.workflow_runs || []).find(r => new Date(r.created_at).getTime() >= afterTimestampMs - 5000);
+    // 업로드 1건당 capacity plan/ROB report/manifest까지 최대 3번의 push가 발생하고, 각각 별도
+    // 워크플로 실행을 트리거한다 -- manifest 커밋보다 먼저 트리거된 실행들은 manifest.json이
+    // 아직 없어 아무 것도 처리하지 않고 끝나거나(성공), 뒤이은 push에 의해 취소(cancelled)된다.
+    // 실제 분석(AI 호출/PR 생성)은 항상 manifest 커밋이 트리거한 실행에서만 일어나므로, 그
+    // 커밋 메시지로 정확히 짚어내야 한다 -- 그냥 시간 순으로 먼저 찾은 실행을 쓰면 취소된
+    // 중간 실행을 "실패"로 오인해 보고하는 문제가 있었다.
+    run = (runs.workflow_runs || []).find(r =>
+      new Date(r.created_at).getTime() >= afterTimestampMs - 5000 &&
+      r.head_commit?.message === manifestCommitMessage
+    );
     if (run && run.status === "completed") break;
     if (run) setStatus(statusEl, `분석 진행 중... (${run.status})`, "pending");
   }
@@ -195,10 +204,11 @@ function initUploader() {
       }
       const robB64 = await fileToBase64(robFile);
       await commitFile(`${uploadBase}/${robFile.name}`, robB64, `bunker: upload ROB report for ${vesselId}`);
+      const manifestCommitMessage = `bunker: manifest for ${vesselId} upload`;
       const manifestB64 = btoa(unescape(encodeURIComponent(JSON.stringify(manifest, null, 2))));
-      await commitFile(`${uploadBase}/manifest.json`, manifestB64, `bunker: manifest for ${vesselId} upload`);
+      await commitFile(`${uploadBase}/manifest.json`, manifestB64, manifestCommitMessage);
 
-      await waitForRunAndPR(statusEl, ts);
+      await waitForRunAndPR(statusEl, ts, manifestCommitMessage);
     } catch (err) {
       setStatus(document.getElementById("upload-status"), err.message, "error");
     }
