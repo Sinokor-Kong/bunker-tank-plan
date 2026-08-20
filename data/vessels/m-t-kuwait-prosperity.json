@@ -1,0 +1,136 @@
+{
+  "vesselId": "m-t-kuwait-prosperity",
+  "vesselName": "M/T KUWAIT PROSPERITY",
+  "sourceHash": "a01892209cbe781807290f8941ea4e3eefe023eccd7aa54ce2e267e678b57057",
+  "sourceFile": "(FG-04) CAPACITY PLAN & DEADWEIGHT SCALE.pdf",
+  "sourceReportedTankCount": 6,
+  "sourceReportedTotalCapacity": 5718.9,
+  "display": {
+    "decimals": 1,
+    "unit": "M³",
+    "missingLabel": "N/A",
+    "minVisibleCapacity": 100
+  },
+  "hull": {
+    "centerlineY": 325,
+    "sternLine": {
+      "x": 170,
+      "yTop": 234,
+      "yBottom": 416
+    }
+  },
+  "groups": [
+    {
+      "id": "PORT",
+      "label": "PORT SIDE"
+    },
+    {
+      "id": "STBD",
+      "label": "STARBOARD SIDE"
+    }
+  ],
+  "tanks": [
+    {
+      "id": "l-s-h-f-o-bunk-tank-p",
+      "name": "L.S.H.F.O.BUNK.TANK(P)",
+      "group": "PORT",
+      "capacity": 829.8,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 1,
+      "position": {
+        "x": 1254,
+        "y": 130
+      },
+      "size": {
+        "w": 72,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-1-h-f-o-bunk-tank-s",
+      "name": "NO.1 H.F.O.BUNK.TANK(S)",
+      "group": "STBD",
+      "capacity": 829.8,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 2,
+      "position": {
+        "x": 1254,
+        "y": 390
+      },
+      "size": {
+        "w": 72,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-h-f-o-bunk-tank-p",
+      "name": "NO.2 H.F.O.BUNK.TANK(P)",
+      "group": "PORT",
+      "capacity": 1341.4,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 3,
+      "position": {
+        "x": 846,
+        "y": 130
+      },
+      "size": {
+        "w": 408,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-h-f-o-bunk-tank-s",
+      "name": "NO.2 H.F.O.BUNK.TANK(S)",
+      "group": "STBD",
+      "capacity": 2077.6,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 4,
+      "position": {
+        "x": 726,
+        "y": 390
+      },
+      "size": {
+        "w": 528,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-1-m-g-o-stor-tank-s",
+      "name": "NO.1 M.G.O STOR.TANK(S)",
+      "group": "STBD",
+      "capacity": 229,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 5,
+      "position": {
+        "x": 606,
+        "y": 390
+      },
+      "size": {
+        "w": 120,
+        "h": 130
+      }
+    },
+    {
+      "id": "no-2-m-g-o-stor-tank-p",
+      "name": "NO.2 M.G.O.STOR.TANK(P)",
+      "group": "PORT",
+      "capacity": 411.3,
+      "role": "STORAGE",
+      "onShell": true,
+      "order": 6,
+      "position": {
+        "x": 606,
+        "y": 130
+      },
+      "size": {
+        "w": 240,
+        "h": 130
+      }
+    }
+  ]
+}

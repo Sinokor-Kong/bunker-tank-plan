@@ -160,5 +160,15 @@
         "reportDate": "2026-08-19T18:00:00"
       }
     ]
+  },
+  {
+    "vesselId": "m-t-kuwait-prosperity",
+    "vesselName": "M/T KUWAIT PROSPERITY",
+    "reports": [
+      {
+        "slug": "2026-08-16-12-00-00",
+        "reportDate": "2026-08-16T12:00:00"
+      }
+    ]
   }
 ]

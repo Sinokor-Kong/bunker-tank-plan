@@ -1,0 +1,41 @@
+{
+  "vesselId": "m-t-kuwait-prosperity",
+  "reportDate": "2026-08-16T12:00:00",
+  "meta": {
+    "position": "At Anchor",
+    "condition": "At Anchor",
+    "trim": 3.4
+  },
+  "rob": [
+    {
+      "tankId": "l-s-h-f-o-bunk-tank-p",
+      "grade": "HSFO",
+      "rob": 755.75
+    },
+    {
+      "tankId": "no-1-h-f-o-bunk-tank-s",
+      "grade": "HSFO",
+      "rob": 747.7
+    },
+    {
+      "tankId": "no-2-h-f-o-bunk-tank-p",
+      "grade": "LSFO",
+      "rob": 863
+    },
+    {
+      "tankId": "no-2-h-f-o-bunk-tank-s",
+      "grade": "HSFO",
+      "rob": 684.71
+    },
+    {
+      "tankId": "no-1-m-g-o-stor-tank-s",
+      "grade": "MGO",
+      "rob": 202.3
+    },
+    {
+      "tankId": "no-2-m-g-o-stor-tank-p",
+      "grade": "MGO",
+      "rob": 357.87
+    }
+  ]
+}
