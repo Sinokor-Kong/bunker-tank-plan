@@ -69,6 +69,17 @@
   #plan-container { width: 100%; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: #ffffff; }
   #plan-container svg { display: block; }
 
+  /* --- 3D VIEW --- */
+  .view-toggle-group { display: flex; gap: 6px; }
+  .view-toggle-btn { font-family: inherit; font-weight: 700; font-size: 12px; letter-spacing: 0.04em; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--ink-muted); cursor: pointer; }
+  .view-toggle-btn--active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  #view-3d-disclaimer { font-size: 12px; color: var(--ink-muted); line-height: 1.5; margin-bottom: 6px; }
+  #view-3d-precision-note { font-size: 12px; color: var(--accent); line-height: 1.5; margin-bottom: 6px; }
+  #view-3d-container { width: 100%; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: #eef1f5; min-height: 320px; }
+  #view-3d-container canvas { display: block; }
+  .tank3d-info-panel { position: absolute; top: 10px; left: 10px; max-width: 260px; background: rgba(255,255,255,0.92); border: 1px solid var(--border); border-radius: 4px; padding: 10px 12px; font-size: 13px; line-height: 1.6; color: var(--ink); pointer-events: none; }
+  .tank3d-info-panel strong { font-size: 13.5px; }
+
   #table-container { width: 100%; max-width: 840px; overflow-x: auto; }
   .rob-table { border-collapse: collapse; width: 100%; font-size: 19px; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .rob-table th, .rob-table td { border: 1px solid var(--border); padding: 11px 14px; text-align: left; }
@@ -121,6 +132,10 @@
         <label for="date-select">Date</label>
         <select id="date-select" class="console-select"></select>
       </div>
+      <div class="view-toggle-group">
+        <button type="button" id="view-toggle-2d" class="view-toggle-btn view-toggle-btn--active">2D PLAN</button>
+        <button type="button" id="view-toggle-3d" class="view-toggle-btn">3D VIEW</button>
+      </div>
     </div>
   </div>
 
@@ -133,6 +148,11 @@
   <div id="main-panel">
     <div id="plan-container"></div>
     <div id="table-container"></div>
+    <div id="view-3d-wrap" style="display:none;">
+      <div id="view-3d-disclaimer">3D VIEW는 실제 Tank 배치를 참고용으로 시각화한 것으로, 선박의 정확한 3차원 형상/치수를 표현하지 않습니다 — 정확한 Capacity/Frame 정보는 항상 위 2D PLAN이 기준입니다. Tank가 채워진 정도도 실제 액면 높이가 아니라 ROB/Capacity 비율을 나타내는 시각 표시입니다.</div>
+      <div id="view-3d-precision-note"></div>
+      <div id="view-3d-container"></div>
+    </div>
   </div>
   <div id="totals"></div>
   <div class="footnote">Grade별 표시 규칙은 각 선박 Report의 원본 구분을 그대로 따릅니다. 화면에는 ① 선체 외판에 붙어 있고 ② Storage Tank이며 ③ 100 m³ 이상인 Tank만 표시되고, Sett./Serv./Overflow Tank나 외판에 붙어있지 않은 이중저 Storage Tank는 용량과 무관하게 생략됩니다 (합계에는 항상 포함).</div>

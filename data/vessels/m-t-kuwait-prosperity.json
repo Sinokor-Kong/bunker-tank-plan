@@ -19,6 +19,17 @@
       "yBottom": 416
     }
   },
+  "principalParticulars": {
+    "lengthOA": 333.08,
+    "lengthBP": 322.00,
+    "breadthMld": 60.00,
+    "depthMld": 29.40,
+    "draftDesigned": 20.50,
+    "draftScantling": 21.60,
+    "unit": "m",
+    "verified": true,
+    "source": "Capacity Plan PRINCIPAL DIMENSIONS 표, 직접 확인 (2026-08-20)"
+  },
   "groups": [
     {
       "id": "PORT",
@@ -38,6 +49,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 1,
+      "cg": {
+        "long": -112.744, "trans": -14.220, "vert": 20.812, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan HEAVY FUEL OIL TANKS 표(LCG는 Midship 기준), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 1254,
         "y": 130
@@ -55,6 +71,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 2,
+      "cg": {
+        "long": -112.744, "trans": 14.220, "vert": 20.812, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan HEAVY FUEL OIL TANKS 표(LCG는 Midship 기준), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 1254,
         "y": 390
@@ -72,6 +93,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 3,
+      "cg": {
+        "long": -121.571, "trans": -18.416, "vert": 23.524, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan HEAVY FUEL OIL TANKS 표(LCG는 Midship 기준), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 846,
         "y": 130
@@ -89,6 +115,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 4,
+      "cg": {
+        "long": -122.482, "trans": 17.438, "vert": 22.958, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan HEAVY FUEL OIL TANKS 표(LCG는 Midship 기준), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 726,
         "y": 390
@@ -106,6 +137,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 5,
+      "cg": {
+        "long": -136.067, "trans": 16.139, "vert": 22.895, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan DIESEL & GAS OIL TANKS 표(LCG는 Midship 기준), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 606,
         "y": 390
@@ -123,6 +159,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 6,
+      "cg": {
+        "long": -132.967, "trans": -16.549, "vert": 22.549, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan DIESEL & GAS OIL TANKS 표(LCG는 Midship 기준), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 606,
         "y": 130

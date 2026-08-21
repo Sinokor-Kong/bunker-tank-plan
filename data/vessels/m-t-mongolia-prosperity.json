@@ -19,6 +19,18 @@
       "yBottom": 416
     }
   },
+  "principalParticulars": {
+    "lengthOA": 330.00,
+    "lengthBP": 316.00,
+    "breadthMld": 60.00,
+    "depthMld": 29.70,
+    "draftDesigned": 19.20,
+    "draftScantling": 21.50,
+    "unit": "m",
+    "frameSpacingMm": 900,
+    "verified": true,
+    "source": "Capacity Plan PRINCIPAL PARTICULARS 표, 직접 확인 (2026-08-20)"
+  },
   "groups": [
     {
       "id": "PORT",
@@ -38,6 +50,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 1,
+      "cg": {
+        "long": 38.43, "trans": 18.76, "vert": 21.60, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan SUMMARY 표(HEAVY FUEL OIL), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 606,
         "y": 130
@@ -55,6 +72,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 2,
+      "cg": {
+        "long": 42.08, "trans": -18.76, "vert": 21.53, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan SUMMARY 표(HEAVY FUEL OIL), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 846,
         "y": 390
@@ -72,6 +94,11 @@
       "role": "STORAGE",
       "onShell": true,
       "order": 3,
+      "cg": {
+        "long": 34.49, "trans": -18.94, "vert": 22.25, "unit": "m",
+        "verified": true,
+        "source": "Capacity Plan SUMMARY 표(HEAVY FUEL OIL), 직접 확인 (2026-08-20)"
+      },
       "position": {
         "x": 606,
         "y": 390

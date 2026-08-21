@@ -9,6 +9,13 @@ async function fetchJSON(path) {
   return res.json();
 }
 
+// 3D VIEW는 완전히 별도 기능이라, 아래 모듈이 없거나(아직 로드 전) 3D 내부에서 예외가 나도
+// 2D Plan/Table 렌더링에는 절대 영향이 없어야 한다 -- render3d 관련 호출은 항상 이 변수들과
+// try/catch로만 접근한다.
+let last3D = { vesselConfig: null, report: null };
+let render3DModule = null;
+let is3DViewActive = false;
+
 function renderVessel(vesselEntry, report) {
   const vesselConfig = vesselEntry.config;
   document.getElementById("vessel-name").textContent = vesselConfig.vesselName;
@@ -37,6 +44,18 @@ function renderVessel(vesselEntry, report) {
 
   renderTankPlan(vesselConfig, report, container);
   renderDataTable(vesselConfig, report, document.getElementById("table-container"));
+
+  // 2D와 동일한 검증 게이트를 통과한 데이터만 3D에도 전달한다. 3D 모듈이 아직 로드되지
+  // 않았거나(사용자가 3D 탭을 연 적 없음) 3D가 지금 보이는 상태가 아니면 굳이 그리지 않는다 --
+  // 3D 탭을 열 때 최신 상태로 다시 그려준다(아래 setup3DToggle 참고).
+  last3D = { vesselConfig, report };
+  if (is3DViewActive && render3DModule) {
+    try {
+      render3DModule.render3D(vesselConfig, report, document.getElementById("view-3d-container"));
+    } catch (err) {
+      console.error("[3D VIEW] 렌더링 실패:", err);
+    }
+  }
 
   const robAsOfEl = document.getElementById("rob-as-of");
   robAsOfEl.textContent = report.reportDate ? `ROB as of ${formatReportDate(report.reportDate)}` : "";
@@ -108,6 +127,46 @@ const App = (() => {
   return { loadVessel, reload, getIndex };
 })();
 
+// 3D VIEW 토글: Three.js는 실제로 3D 탭을 처음 열 때만 동적 import()로 로드한다 (2D만 쓰는
+// 사용자는 네트워크/파싱 비용이 전혀 없음). 로드/렌더링이 실패해도 2D Plan에는 영향이 없도록
+// 항상 try/catch로 감싼다.
+function setup3DToggle() {
+  const btn2d = document.getElementById("view-toggle-2d");
+  const btn3d = document.getElementById("view-toggle-3d");
+  const wrap3d = document.getElementById("view-3d-wrap");
+  const container3d = document.getElementById("view-3d-container");
+
+  async function showPlan2D() {
+    is3DViewActive = false;
+    btn2d.classList.add("view-toggle-btn--active");
+    btn3d.classList.remove("view-toggle-btn--active");
+    wrap3d.style.display = "none";
+    document.getElementById("plan-container").style.display = "";
+    document.getElementById("table-container").style.display = "";
+  }
+
+  async function showPlan3D() {
+    is3DViewActive = true;
+    btn3d.classList.add("view-toggle-btn--active");
+    btn2d.classList.remove("view-toggle-btn--active");
+    document.getElementById("plan-container").style.display = "none";
+    document.getElementById("table-container").style.display = "none";
+    wrap3d.style.display = "";
+
+    if (!last3D.vesselConfig) return; // 선박이 아직 선택되기 전이면 아무것도 안 함
+    try {
+      if (!render3DModule) render3DModule = await import("./render3d.js");
+      render3DModule.render3D(last3D.vesselConfig, last3D.report, container3d);
+    } catch (err) {
+      console.error("[3D VIEW] 로드/렌더링 실패:", err);
+      container3d.textContent = "3D 뷰를 불러올 수 없습니다.";
+    }
+  }
+
+  btn2d.addEventListener("click", showPlan2D);
+  btn3d.addEventListener("click", showPlan3D);
+}
+
 async function boot() {
   const vesselSelect = document.getElementById("vessel-select");
   const dateSelect = document.getElementById("date-select");
@@ -139,6 +198,7 @@ async function boot() {
 
   vesselSelect.addEventListener("change", () => selectVessel(vesselSelect.value));
   dateSelect.addEventListener("change", renderCurrentSelection);
+  setup3DToggle();
 
   await App.reload();
   populateVesselOptions();
